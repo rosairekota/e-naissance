@@ -169,7 +169,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       fill=""
                     />
                   </svg>
-                  Calendar
+                  Transfèr
                 </Link>
               </li>
               {/* <!-- Menu Item Calendar --> */}
@@ -199,7 +199,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       fill=""
                     />
                   </svg>
-                  Profile
+                  Transfert request
                 </Link>
               </li>
               {/* <!-- Menu Item Profile --> */}
@@ -256,7 +256,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             fill="white"
                           />
                         </svg>
-                        Forms
+                        Demande de requête
                         <svg
                           className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
                             open && "rotate-180"
@@ -346,7 +346,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       </clipPath>
                     </defs>
                   </svg>
-                  Tables
+                  Solde du wallet
                 </Link>
               </li>
               {/* <!-- Menu Item Tables --> */}
@@ -389,7 +389,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       </clipPath>
                     </defs>
                   </svg>
-                  Settings
+                  Historique wallet 
                 </Link>
               </li>
               {/* <!-- Menu Item Settings --> */}
