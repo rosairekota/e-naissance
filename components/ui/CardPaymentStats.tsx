@@ -1,26 +1,29 @@
 import React, { ReactNode } from 'react';
 
-interface CardDataStatsProps {
-  title: string;
-  total: string;
-  rate: string;
+interface CardPaymentStatsProps {
+  title?: string;
+  total?: string;
+  detail?: string;
   levelUp?: boolean;
   levelDown?: boolean;
+   icon?:ReactNode,
   children: ReactNode;
+  description?:any;
 }
 
-const CardDataStats: React.FC<CardDataStatsProps> = ({
+const CardPaymentStats: React.FC<CardPaymentStatsProps> = ({
   title,
   total,
-  rate,
+  detail,
   levelUp,
   levelDown,
   children,
+   icon
 }) => {
   return (
     <div className=" bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark rounded-xl">
       <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-        {children}
+        { icon}
       </div>
 
       <div className="mt-4 flex items-end justify-between">
@@ -29,14 +32,17 @@ const CardDataStats: React.FC<CardDataStatsProps> = ({
             {total}
           </h4>
           <span className="text-sm font-medium">{title}</span>
+            <div>
+          <div className='mt-2'>{children}</div>
+         </div>
         </div>
-
+       
         <span
-          className={`flex items-center gap-1 text-sm font-medium ${
+          className={`flex items-center gap-1 text-sm font-medium cursor-pointer ${
             levelUp && 'text-meta-3'
           } ${levelDown && 'text-meta-5'} `}
         >
-          {rate}
+          {detail}
 
           {levelUp && (
             <svg
@@ -74,4 +80,4 @@ const CardDataStats: React.FC<CardDataStatsProps> = ({
   );
 };
 
-export default CardDataStats;
+export default CardPaymentStats;

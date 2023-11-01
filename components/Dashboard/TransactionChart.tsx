@@ -2,6 +2,7 @@
 import { ApexOptions } from "apexcharts";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
+import { IChart } from "@/types/interfaces";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
@@ -124,15 +125,9 @@ const options: ApexOptions = {
   },
 };
 
-interface ChartOneState {
-  series: {
-    name: string;
-    data: number[];
-  }[];
-}
 
-const ChartOne: React.FC = () => {
-  const [state, setState] = useState<ChartOneState>({
+export const TransactionChart: React.FC = () => {
+  const [state, setState] = useState<IChart>({
     series: [
       {
         name: "Product One",
@@ -172,16 +167,16 @@ const ChartOne: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full max-w-45 justify-end">
+        <div className="flex w-full max-w-52 justify-end">
           <div className="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
             <button className="rounded bg-white py-1 px-3 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">
-              Day
+              Par jour
             </button>
             <button className="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
-              Week
+              Par semaine
             </button>
             <button className="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
-              Month
+              Par mois
             </button>
           </div>
         </div>
@@ -202,4 +197,3 @@ const ChartOne: React.FC = () => {
   );
 };
 
-export default ChartOne;
