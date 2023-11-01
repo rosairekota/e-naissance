@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 
-interface CardDataStatsProps {
+interface CardPaymentStatsProps {
   title?: string;
   total?: string;
-  rate?: string;
+  detail?: string;
   levelUp?: boolean;
   levelDown?: boolean;
    icon?:ReactNode,
@@ -11,10 +11,10 @@ interface CardDataStatsProps {
   description?:any;
 }
 
-const CardDataStats: React.FC<CardDataStatsProps> = ({
+const CardPaymentStats: React.FC<CardPaymentStatsProps> = ({
   title,
   total,
-  rate,
+  detail,
   levelUp,
   levelDown,
   children,
@@ -38,11 +38,11 @@ const CardDataStats: React.FC<CardDataStatsProps> = ({
         </div>
        
         <span
-          className={`flex items-center gap-1 text-sm font-medium ${
+          className={`flex items-center gap-1 text-sm font-medium cursor-pointer ${
             levelUp && 'text-meta-3'
           } ${levelDown && 'text-meta-5'} `}
         >
-          {rate}
+          {detail}
 
           {levelUp && (
             <svg
@@ -80,4 +80,4 @@ const CardDataStats: React.FC<CardDataStatsProps> = ({
   );
 };
 
-export default CardDataStats;
+export default CardPaymentStats;
