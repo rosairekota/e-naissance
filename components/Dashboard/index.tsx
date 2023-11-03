@@ -28,7 +28,7 @@ export const Dashboard: React.FC = () => {
                     <TabsTrigger value={balanceTab} className="rounded bg-white py-1 px-2 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">Balances</TabsTrigger>
                     <TabsTrigger value={paymentTab}>Paiements</TabsTrigger>
                 </TabsList>
-                <TabsContent value={balanceTab}> <BalanceKpi /></TabsContent>
+                <TabsContent value={balanceTab}> <PaiementsKpi /></TabsContent>
                 <TabsContent value={paymentTab}>   <PaiementsKpi /></TabsContent>
             </Tabs>
             {tab}
