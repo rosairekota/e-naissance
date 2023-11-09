@@ -2,9 +2,14 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-// import BgHiro from "@/assets/images/Carte.jpg";
+import { useRouter } from "next/navigation";
 
 export const Login = () => {
+  const router = useRouter()
+  const handleLogin = (e: any) => {
+    e.preventDefault()
+    router.push('/admin')
+  }
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2">
       <section className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24 h-screen">
@@ -66,7 +71,7 @@ export const Login = () => {
 
               <div>
                 <button
-                  type="submit"
+                  onClick={handleLogin}
                   className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-primary-800 border border-transparent rounded-md focus:outline-none hover:bg-primary-900 focus:bg-primary-900"
                 >
                   Se connecter
@@ -108,15 +113,15 @@ export const Login = () => {
       </section>
 
       <section>
-      <div className="flex justify-center my-3">
-      <Image
-              src={'/images/logo.png'}
-              className=""
-              width={200}
-              height={10}
-              alt="image"
-            />
-      </div>
+        <div className="flex justify-center my-3">
+          <Image
+            src={'/images/logo.png'}
+            className=""
+            width={200}
+            height={10}
+            alt="image"
+          />
+        </div>
         <div className="flex items-center justify-center px-4 py-10 sm:py-16 lg:py-24 bg-gray-50 sm:px-6 lg:px-8 h-full">
           <div>
 
@@ -130,10 +135,10 @@ export const Login = () => {
 
             <div className="w-full max-w-md mx-auto xl:max-w-xl">
               <h4 className="text-2xl font-bold text-center text-text-primary">
-              Acceptez les <span className="text-primary-800">paiements mobiles</span> dès maintenant.
+                Acceptez les <span className="text-primary-800">paiements mobiles</span> dès maintenant.
               </h4>
               <p className="leading-relaxed text-center text-gray-500 mt-2.5">
-              Optimisez vos transactions avec notre plateforme fintech. Commencez à accepter les paiements mobiles dès maintenant.
+                Optimisez vos transactions avec notre plateforme fintech. Commencez à accepter les paiements mobiles dès maintenant.
               </p>
 
               <div className="flex items-center justify-center mt-10 space-x-3">
