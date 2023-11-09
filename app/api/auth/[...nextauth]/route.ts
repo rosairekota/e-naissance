@@ -2,7 +2,7 @@
 import  CredentialsProvider  from 'next-auth/providers/credentials';
 import NextAuth, { NextAuthOptions } from "next-auth"
 import { MANAGEMENT_API_URL } from '@/config';
-export const authOptions:NextAuthOptions ={
+const authOptions:NextAuthOptions ={
     providers: [
         CredentialsProvider({
           name: 'Credentials',
@@ -31,9 +31,6 @@ export const authOptions:NextAuthOptions ={
         })
       ],
       
-      pages: {
-        signIn: '/auth/signin',
-      },
 
 
 }
