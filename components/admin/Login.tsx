@@ -130,11 +130,10 @@ export const Login = () => {
 
             <div className="w-full max-w-md mx-auto xl:max-w-xl">
               <h4 className="text-2xl font-bold text-center text-text-primary">
-               Acceptez vos <span className="text-primary-800">paiements mobiles</span> dès maintenants
+              Acceptez les <span className="text-primary-800">paiements mobiles</span> dès maintenant.
               </h4>
               <p className="leading-relaxed text-center text-gray-500 mt-2.5">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint. Velit officia consequat duis.
+              Optimisez vos transactions avec notre plateforme fintech. Commencez à accepter les paiements mobiles dès maintenant.
               </p>
 
               <div className="flex items-center justify-center mt-10 space-x-3">
