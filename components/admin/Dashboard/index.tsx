@@ -1,12 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import ChartOne from "../Charts/ChartOne";
-import ChartTwo from "../Charts/ChartTwo";
-import TableOne from "../Tables/TableOne";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import { BalanceKpi, PaiementsKpi } from "./kpis";
-import ChartThree from "../Charts/ChartThree";
+import ChartThree from "../../ui/Charts/ChartThree";
 import { ChargeChart } from "./ChargeChart";
 import { PaymentChart } from "./PaymentChart";
 import { TransactionChart } from "./TransactionChart";

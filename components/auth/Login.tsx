@@ -113,7 +113,7 @@ export const Login = () => {
       </section>
 
       <section>
-        <div className="flex justify-center my-3">
+        <div className="hidden lg:flex justify-center my-3">
           <Image
             src={'/images/logo.png'}
             className=""
@@ -122,7 +122,7 @@ export const Login = () => {
             alt="image"
           />
         </div>
-        <div className="flex items-center justify-center px-4 py-10 sm:py-16 lg:py-24 bg-gray-50 sm:px-6 lg:px-8 h-full">
+        <div className="hidden lg:flex items-center justify-center px-4 py-10 sm:py-16 lg:py-24 bg-gray-50 sm:px-6 lg:px-8 h-full">
           <div>
 
             <Image

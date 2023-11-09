@@ -1,8 +1,8 @@
-import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import ChartFour from "@/components/Charts/ChartFour";
-import ChartOne from "@/components/Charts/ChartOne";
-import ChartThree from "@/components/Charts/ChartThree";
-import ChartTwo from "@/components/Charts/ChartTwo";
+import Breadcrumb from "@/components/ui/Breadcrumbs/Breadcrumb";
+import ChartFour from "@/components/ui/Charts/ChartFour";
+import ChartOne from "@/components/ui/Charts/ChartOne";
+import ChartThree from "@/components/ui/Charts/ChartThree";
+import ChartTwo from "@/components/ui/Charts/ChartTwo";
 import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Chart Page | Next.js E-commerce Dashboard Template",

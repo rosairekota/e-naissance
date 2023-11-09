@@ -5,8 +5,8 @@ import "../satoshi.css";
 import { useState, useEffect } from "react";
 import Loader from "@/components/common/Loader";
 
-import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
+import Sidebar from "@/components/admin/Sidebar";
+import Header from "@/components/admin/Header";
 
 export default function AdminLayout({
   children,
