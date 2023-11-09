@@ -30,7 +30,7 @@ export const Login = () => {
     <div className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
       <section className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24 h-screen">
         <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
-          <h2 className="text-3xl font-bold leading-tight text-primary-900 sm:text-3xl text-center">
+          <h2 className="text-3xl font-bold leading-tight text-primary-800 sm:text-3xl text-center">
             Se Connecter
           </h2>
 
@@ -73,11 +73,11 @@ export const Login = () => {
           <div className="mt-3 space-y-3">
             <button
               type="button"
-              className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
+              className="relative inline-flex items-center justify-center w-full px-4 py-4 text-primary-800 font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-primary-800 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-primary-900 focus:text-black focus:outline-none"
             >
               <div className="absolute inset-y-0 left-0 p-4">
                 <svg
-                  className="w-6 h-6 text-rose-500"
+                  className="w-6 h-6 text-primary-800"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
