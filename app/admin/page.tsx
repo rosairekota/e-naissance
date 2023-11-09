@@ -2,8 +2,8 @@ import { Dashboard } from "@/components/Dashboard";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SwyftPay | ",
-  description: "Welcome",
+  title: "SwyftPay",
+  description: "Bienvenue",
   // other metadata
 };
 

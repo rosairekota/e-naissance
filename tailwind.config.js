@@ -22,7 +22,19 @@ module.exports = {
       bodydark: "#AEB7C0",
       bodydark1: "#DEE4EE",
       bodydark2: "#8A99AF",
-      primary: "#3C50E0",
+      primary: {
+        400: '#ebf4fe',
+        300: '#291FB3',
+        800: '#3D6BDC',
+        900: '#291FB3',
+      },
+      text: {
+        primary: '#50564F',
+        secondary: '#6B6F68',
+      },
+      paper: {
+        default: '#F6F7F9',
+      },
       secondary: "#80CAEE",
       stroke: "#E2E8F0",
       gray: "#EFF4FB",
