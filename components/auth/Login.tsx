@@ -102,7 +102,7 @@ export const Login = () => {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-primary-800/95 to-primary-900 relative">
+      <section className="bg-primary-900 relative">
         <div className="absolute left-20 top-1/2 -translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2">
           <svg viewBox="0 0 558 558" width="558" height="558" fill="none" aria-hidden="true"
             className="animate-rotating">
