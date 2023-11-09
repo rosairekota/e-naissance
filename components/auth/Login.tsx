@@ -110,7 +110,7 @@ export const Login = () => {
       <section className="bg-gradient-to-b from-primary-800/95 to-primary-900 relative">
       <div className="absolute left-20 top-1/2 -translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2">
                     <svg viewBox="0 0 558 558" width="558" height="558" fill="none" aria-hidden="true"
-                         className="animate-pulse duration-300">
+                         className="animate-rotating">
                         <defs>
                             <linearGradient id=":S4:" x1="79" y1="16" x2="105" y2="237" gradientUnits="userSpaceOnUse">
                                 <stop stop-color="#fff"></stop>
@@ -157,7 +157,7 @@ export const Login = () => {
 
                 <div className="bg-meta-2 rounded-full w-12 h-1.5"></div>
 
-                <div className="bg-meta-7 rounded-full w-12 h-1.5"></div>
+                <div className="bg-meta-7 rounded-full w-12 h-1.5 animate-pulse"></div>
               </div>
             </div>
           </div>
