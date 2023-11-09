@@ -1,6 +1,6 @@
 'use client'
 import clsx from 'clsx';
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { Controller } from 'react-hook-form';
 
 type TextInputProps = {
@@ -11,23 +11,27 @@ type TextInputProps = {
     rules?: string | number | any;
     type: string;
     control?: any;
+    children?: ReactNode;
     errors: any;
     onChange?: (e: any) => void;
 
 }
-export const TextInput: React.FC<TextInputProps> = ({ className, name, labelText, rules, control, errors, type, placeholder }) => {
+export const TextInput: React.FC<TextInputProps> = ({ className, name, labelText, rules, control, errors, type, placeholder, children }) => {
     const renderError=()=>{
         return errors[name]?.message !== undefined ? 'border-danger':''
     }
     
     return (
         <div>
-            <label
+           <div className='flex items-center justify-between'>
+           <label
                 htmlFor={name}
                 className="text-base font-medium text-gray-900"
             >
                 {labelText}
             </label>
+            {children}
+           </div>
             <Controller
                 control={control}
                 name={name}
@@ -39,7 +43,7 @@ export const TextInput: React.FC<TextInputProps> = ({ className, name, labelText
                         onBlur={onBlur}
                         value={value}
                         placeholder={placeholder}
-                        className={`${clsx(className, 'block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-primary-800 focus:bg-white caret-primary-800 mt-2.5')} ${renderError()}`}
+                        className={`${clsx(className, 'block w-full p-3 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-primary-800 focus:bg-white caret-primary-800 mt-2.5')} ${renderError()}`}
                     />
                 )} />
             <span className="text-danger mt-1.5">
