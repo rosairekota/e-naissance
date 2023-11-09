@@ -58,7 +58,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   return (
     <aside
       ref={sidebar}
-      className={`rounded-t-3xl absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
+      className={`rounded-t-3xl absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-primary-900 duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -110,9 +110,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <Link
                   href="/admin"
-                  className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-primary-400/10 dark:hover:bg-meta-4 ${
                     pathname.includes("dashboard") &&
-                    "bg-graydark dark:bg-meta-4"
+                    "bg-primary-400/10 dark:bg-meta-4"
                   }`}
                 >
                  <svg
@@ -145,10 +145,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               </li>
               <li>
                 <Link
-                  href="/calendar"
-                  className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                  href="#"
+                  className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-primary-400/10 dark:hover:bg-meta-4 ${
                     pathname.includes("calendar") &&
-                    "bg-graydark dark:bg-meta-4"
+                    "bg-primary-400/10 dark:bg-meta-4"
                   }`}
                 >
                   <svg
@@ -173,8 +173,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <Link
                   href="#"
-                  className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes("profile") && "bg-graydark dark:bg-meta-4"
+                  className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-primary-400/10 dark:hover:bg-meta-4 ${
+                    pathname.includes("profile") && "bg-primary-400/10 dark:bg-meta-4"
                   }`}
                 >
                   <svg
@@ -210,10 +210,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     <React.Fragment>
                       <Link
                         href="#"
-                        className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                        className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-primary-400/10 dark:hover:bg-meta-4 ${
                           (pathname === "/forms" ||
                             pathname.includes("forms")) &&
-                          "bg-graydark dark:bg-meta-4"
+                          "bg-primary-400/10 dark:bg-meta-4"
                         }`}
                         onClick={(e) => {
                           e.preventDefault();
@@ -312,8 +312,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <Link
                   href="#"
-                  className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes("tables") && "bg-graydark dark:bg-meta-4"
+                  className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-primary-400/10 dark:hover:bg-meta-4 ${
+                    pathname.includes("tables") && "bg-primary-400/10 dark:bg-meta-4"
                   }`}
                 >
                   <svg
@@ -350,9 +350,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <Link
                   href="#"
-                  className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-primary-400/10 dark:hover:bg-meta-4 ${
                     pathname.includes("settings") &&
-                    "bg-graydark dark:bg-meta-4"
+                    "bg-primary-400/10 dark:bg-meta-4"
                   }`}
                 >
                   <svg
