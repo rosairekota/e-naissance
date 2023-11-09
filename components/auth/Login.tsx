@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { loginSchemaValidation } from "@/validators/login.schema";
 import { TextInput } from "../ui/inputs/TextInput";
-import  Link  from "next/link";
+import Link from "next/link";
 type ILogin = {
   email: string
   password: string
@@ -45,24 +45,19 @@ export const Login = () => {
                 type={'text'}
               />
 
-              <div>
-                <div className="flex items-center justify-end">
-                  <Link
-                    href="#"
-                    className="text-sm font-medium text-primary-800 hover:underline hover:text-primary-900 focus:text-primary-900"
-                  >
-                    Mot de passe oublié ?
-                  </Link>
-                </div>
-                <TextInput
-                  labelText="Mot de passe"
-                  control={control}
-                  name="password"
-                  errors={errors}
-                  placeholder="Entrer le mot de passe"
-                  type={'password'}
-                />
-              </div>
+              <TextInput
+                labelText="Mot de passe"
+                control={control}
+                name="password"
+                errors={errors}
+                placeholder="Entrer le mot de passe"
+                type={'password'}
+              > <Link
+                href="#"
+                className="text-sm font-medium text-primary-800 hover:underline hover:text-primary-900 focus:text-primary-900"
+              >
+                  Mot de passe oublié ?
+                </Link></TextInput>
 
               <div>
                 <button
@@ -108,21 +103,21 @@ export const Login = () => {
       </section>
 
       <section className="bg-gradient-to-b from-primary-800/95 to-primary-900 relative">
-      <div className="absolute left-20 top-1/2 -translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2">
-                    <svg viewBox="0 0 558 558" width="558" height="558" fill="none" aria-hidden="true"
-                         className="animate-rotating">
-                        <defs>
-                            <linearGradient id=":S4:" x1="79" y1="16" x2="105" y2="237" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#fff"></stop>
-                                <stop offset="1" stop-color="#fff" stop-opacity="0"></stop>
-                            </linearGradient>
-                        </defs>
-                        <path opacity=".2"
-                              d="M1 279C1 125.465 125.465 1 279 1s278 124.465 278 278-124.465 278-278 278S1 432.535 1 279Z"
-                              stroke="#fff"></path>
-                        <path d="M1 279C1 125.465 125.465 1 279 1" stroke="url(#:S4:)" stroke-linecap="round"></path>
-                    </svg>
-                </div>
+        <div className="absolute left-20 top-1/2 -translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2">
+          <svg viewBox="0 0 558 558" width="558" height="558" fill="none" aria-hidden="true"
+            className="animate-rotating">
+            <defs>
+              <linearGradient id=":S4:" x1="79" y1="16" x2="105" y2="237" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#fff"></stop>
+                <stop offset="1" stop-color="#fff" stop-opacity="0"></stop>
+              </linearGradient>
+            </defs>
+            <path opacity=".2"
+              d="M1 279C1 125.465 125.465 1 279 1s278 124.465 278 278-124.465 278-278 278S1 432.535 1 279Z"
+              stroke="#fff"></path>
+            <path d="M1 279C1 125.465 125.465 1 279 1" stroke="url(#:S4:)" stroke-linecap="round"></path>
+          </svg>
+        </div>
         <div className="hidden lg:flex justify-center my-3">
           {/* <Image
             src={'/images/logo.png'}
