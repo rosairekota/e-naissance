@@ -1,0 +1,1 @@
+export  { MANAGEMENT_API_URL }  from './api-urls'
