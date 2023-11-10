@@ -25,7 +25,7 @@ export const Login = () => {
     resolver: yupResolver(loginSchemaValidation),
   })
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const callbackUrl = '/admin'
+  const redirecRoutePath = '/admin'
   const handleLogin: SubmitHandler<ILogin> = async (data: ILogin) => {
     try {
       setIsLoading(true)
@@ -33,11 +33,12 @@ export const Login = () => {
         redirect: false,
         email: data.email,
         password: data.password,
-        callbackUrl: 'http://localhost:3000/admin'
+        callbackUrl: 'http://localhost:3000/auth/signin',
       })
-      console.log("resStatus:", res?.ok)
+      console.log("resStatus:", res?.status)
       if (!res?.error) {
-        router.push(callbackUrl)
+        router.push(redirecRoutePath)
+        router.refresh()
       }
       setIsLoading(false)
     } catch (error) {

@@ -3,7 +3,8 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import NextAuth, { NextAuthOptions } from "next-auth"
 import { MANAGEMENT_API_URL } from '@/config';
 import { IAuth } from '@/types/auth';
-const authOptions: NextAuthOptions = {
+import { IUser } from '@/types/user.interface';
+export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/auth/signin'
   },
@@ -17,39 +18,50 @@ const authOptions: NextAuthOptions = {
         username: { label: "Email", type: "email", placeholder: "jonhdoe@gmail.com" },
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials: IAuth | any, req: any) {
+      async authorize(credentials: IAuth | any, req: any):Promise<IUser|null> {
+        console.log("credentials:", credentials)
         if (!credentials.email || !credentials?.password) return null
-        const res = await fetch('https://agri.kinshasadigital.dev/api/auth/signin', {
+        const res = await fetch(`${MANAGEMENT_API_URL}/auth/login`, {
           method: 'POST',
-          body: JSON.stringify(credentials),
+          body: JSON.stringify({email: credentials.email, password: credentials.password}),
           headers: { "Content-Type": "application/json" }
         })
-        const user = await res.json()
-        console.log("response", user)
+        const result = await res.json()
 
-        if (res.ok && user) {
-          console.log("ok")
-          return user
+        if (res.ok && result) {
+          return {
+            id: result?.user?.id,
+            email: result?.user?.email,
+            firstName:  result?.user?.firstName,
+            lastName:  result?.user?.lastName,
+            isActive: result?.user?.isActive,
+            isMerchant: result?.user?.isMerchant,
+            roles:  result?.user?.userRoles,
+            accessToken: result?.accessToken,
+            refreshToken: result?.refreshToken,
+            ...result?.user
+          }
         }
-        return null
+        throw new Error("Cet utilisateur n'existe pas")
       },
     })
   ],
   callbacks: {
-    async session({ session, token, user }) {
-      console.log("session-auth:", session)
-      // session.accessToken  = token.accessToken  as unknown as any;
-      // session.user.id = token.id
-      
-      return session
-    },
+   
     async jwt({ token, user }) {
-      // Persist the OAuth access_token and or the user id to the token right after signin
-      console.log("jwt-auth:", token)
+      if (user)  return {token, user}
       return token
     },
+    async session({ session, token, user }) {
+      session.accessToken  = token.accessToken;
+      session.refreshToken= token.refreshToken
+      session.user = token.user
+      console.log("session-auth:", session )
+      return session
+    },
   
-  }
+  },
+  secret: process.env.NEXTAUTH_SECRET,
 
 
 }

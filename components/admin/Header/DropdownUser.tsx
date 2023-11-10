@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -11,7 +12,9 @@ const DropdownUser = () => {
   const router = useRouter()
   const handleLogout = (e: any) => {
     e.preventDefault()
+    signOut()
     router.push('/auth/signin')
+    router.refresh()
   }
 
   // close on click outside
