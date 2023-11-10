@@ -33,7 +33,7 @@ export const Dashboard: React.FC<DashboardProps> = ({session}) => {
     return (
         <>
             <Tabs defaultValue={balanceTab} className="w-full" onValueChange={handleTabChange}>
-                <TabsList className="transition duration-1000 ease-out bg-whiter">
+                <TabsList className="transition duration-1000 ease-out">
                     <TabsTrigger value={balanceTab} className="rounded bg-white py-1 px-2 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">Balances</TabsTrigger>
                     <TabsTrigger value={paymentTab}>Paiements</TabsTrigger>
                 </TabsList>
