@@ -18,7 +18,7 @@ type TextInputProps = {
 }
 export const TextInput: React.FC<TextInputProps> = ({ className, name, labelText, rules, control, errors, type, placeholder, children }) => {
     const renderError=()=>{
-        return errors[name]?.message !== undefined ? 'border-danger':''
+        return errors[name]?.message !== undefined ? 'border-meta-1':''
     }
     
     return (
@@ -43,7 +43,7 @@ export const TextInput: React.FC<TextInputProps> = ({ className, name, labelText
                         onBlur={onBlur}
                         value={value}
                         placeholder={placeholder}
-                        className={`${clsx(className, 'block w-full p-3 text-black placeholder-gray-500 transition-all duration-200 border border-text-primary/5 rounded-md bg-gray-50 focus:outline-none focus:border-primary-800 focus:bg-white caret-primary-800 mt-2.5')} ${renderError()}`}
+                        className={`${clsx(className, 'block w-full p-3 text-black placeholder-gray-500 transition-all duration-200 border border-primary-800/25 rounded-md bg-gray-50 focus:outline-none focus:border-primary-800 focus:bg-white caret-primary-800 mt-2.5')} ${renderError()}`}
                     />
                 )} />
             <span className="text-danger mt-1.5">
