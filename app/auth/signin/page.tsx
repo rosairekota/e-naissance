@@ -13,12 +13,12 @@ export const metadata: Metadata = {
 
 const SignIn: React.FC = async() => {
   const session = await getServerSession()
-  // if (session) {
-  //   redirect('/admin')
-  // }
+  if (session) {
+    redirect('/admin')
+  }
   return (
     <div>
-   {JSON.stringify(session)}
+     
      <Login/>
     </div>
   );

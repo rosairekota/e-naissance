@@ -2,9 +2,10 @@
 import "./globals.css";
 import "./data-tables-css.css";
 import "./satoshi.css";
-import NextAuthProvider from "@/components/NextAuthProvider";
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
+import ReduxProdiver from "./providers/ReduxProvider";
+import NextAuthProvider from "./providers/NextAuthProvider";
 const inter = Montserrat({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -25,7 +26,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
       <NextAuthProvider>
-       {children}
+       <ReduxProdiver>
+        {children}
+       </ReduxProdiver>
       </NextAuthProvider>
       </body>
     </html>

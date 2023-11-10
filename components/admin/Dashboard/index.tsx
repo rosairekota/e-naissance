@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
@@ -8,14 +8,25 @@ import ChartThree from "../../ui/Charts/ChartThree";
 import { ChargeChart } from "./ChargeChart";
 import { PaymentChart } from "./PaymentChart";
 import { TransactionChart } from "./TransactionChart";
+import { Session } from "next-auth";
+import { useDispatch } from "react-redux";
+import { AppDispatch, setUser } from "@/store";
 
+type DashboardProps={
+    session: Session|null
+}
 
-
-export const Dashboard: React.FC = () => {
+export const Dashboard: React.FC<DashboardProps> = ({session}) => {
     const [tab, setTab] = useState<string | null>()
     const [balanceTab, setBalanceTab] = useState<string>('balance')
     const [paymentTab, setPaymentTab] = useState<string>('payment')
-
+    const dispatch = useDispatch<AppDispatch>()
+   
+    useEffect(()=>{
+        if(session?.user){
+            dispatch(setUser(session.user))
+        }
+    },[session?.accessToken])
     const handleTabChange = (value: string) => {
         setTab(value)
     }
@@ -30,6 +41,7 @@ export const Dashboard: React.FC = () => {
                 <TabsContent value={paymentTab}>   <PaiementsKpi /></TabsContent>
             </Tabs>
             {tab}
+            {session?.user.email}
             <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
                 <TransactionChart />
                 {tab === paymentTab ? (<PaymentChart />) : <ChargeChart />}

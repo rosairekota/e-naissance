@@ -13,7 +13,7 @@ export default async function Home() {
   const session = await getServerSession(authOptions)
   return (
     <>
-      <Dashboard />
+      <Dashboard session={session}/>
     </>
   );
 }
