@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import Image from "next/image";
@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import { loginSchemaValidation } from "@/validators/login.schema";
 import { TextInput } from "../ui/inputs/TextInput";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { Spinner } from "../ui/Spinner";
 type ILogin = {
   email: string
   password: string
@@ -22,9 +24,25 @@ export const Login = () => {
   } = useForm<ILogin>({
     resolver: yupResolver(loginSchemaValidation),
   })
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const callbackUrl = '/admin'
+  const handleLogin: SubmitHandler<ILogin> = async (data: ILogin) => {
+    try {
+      setIsLoading(true)
+      const res = await signIn('credentials', {
+        redirect: false,
+        email: data.email,
+        password: data.password,
+        callbackUrl: 'http://localhost:3000/admin'
+      })
+      console.log("resStatus:", res?.ok)
+      if (!res?.error) {
+        router.push(callbackUrl)
+      }
+      setIsLoading(false)
+    } catch (error) {
 
-  const handleLogin: SubmitHandler<ILogin> = (data: ILogin) => {
-    router.push('/admin')
+    }
   }
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
@@ -62,9 +80,10 @@ export const Login = () => {
               <div>
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-primary-800 border border-transparent rounded-md focus:outline-none hover:bg-primary-900 focus:bg-primary-900"
+                  className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-primary-800 border border-transparent rounded-md focus:outline-none hover:bg-primary-900 focus:bg-primary-900 disabled:bg-primary-800/50"
+                  disabled={isLoading}
                 >
-                  Se connecter
+                      {isLoading ? (<Spinner/>) : "Se connecter"}
                 </button>
               </div>
             </div>
@@ -108,17 +127,17 @@ export const Login = () => {
             className="animate-rotating">
             <defs>
               <linearGradient id=":S4:" x1="79" y1="16" x2="105" y2="237" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#fff"></stop>
-                <stop offset="1" stop-color="#fff" stop-opacity="0"></stop>
+                <stop stopColor="#fff"></stop>
+                <stop offset="1" stopColor="#fff" stopOpacity="0"></stop>
               </linearGradient>
             </defs>
             <path opacity=".2"
               d="M1 279C1 125.465 125.465 1 279 1s278 124.465 278 278-124.465 278-278 278S1 432.535 1 279Z"
               stroke="#fff"></path>
-            <path d="M1 279C1 125.465 125.465 1 279 1" stroke="url(#:S4:)" stroke-linecap="round"></path>
+            <path d="M1 279C1 125.465 125.465 1 279 1" stroke="url(#:S4:)" strokeLinecap="round"></path>
           </svg>
         </div>
-         <div
+        <div
           aria-hidden="true"
           className=" pointer-events-none absolute inset-x-0 top-60 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         >
