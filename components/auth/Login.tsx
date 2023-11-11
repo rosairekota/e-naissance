@@ -57,7 +57,7 @@ export const Login = () => {
           </h2>
 
           <form onSubmit={handleSubmit(handleLogin)} className="mt-8">
-            {isError?(<p className="bg-meta-1/80 p-4 text-white rounded-md my-2">La connexion a échoué. Veuillez vérifier votre nom d&apos;utilisateur et mot de passe et réessayer. </p>):null}
+            {isError?(<p className="bg-meta-1/80 p-4 text-white rounded-md my-2">La connexion a échouée. Veuillez vérifier votre nom d&apos;utilisateur et mot de passe et réessayer. </p>):null}
             <div className="space-y-5">
               <TextInput
                 labelText="Email"
