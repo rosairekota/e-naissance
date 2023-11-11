@@ -1,9 +1,10 @@
 
 import CredentialsProvider from 'next-auth/providers/credentials';
-import NextAuth, { NextAuthOptions } from "next-auth"
+import NextAuth, { Awaitable, NextAuthOptions } from "next-auth"
 import { MANAGEMENT_API_URL } from '@/config';
 import { IAuth } from '@/types/auth';
 import { IUser } from '@/types/user.interface';
+import { JWT } from 'next-auth/jwt';
 export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/auth/signin'
@@ -48,8 +49,8 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
    
-    async jwt({ token, user }) {
-      if (user)  return {token, user}
+    async jwt({ token, user }): Promise<JWT> {
+      if (user)  return {token, user} as unknown as any
       return token
     },
     async session({ session, token, user }) {
