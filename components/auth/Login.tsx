@@ -25,10 +25,12 @@ export const Login = () => {
     resolver: yupResolver(loginSchemaValidation),
   })
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isError, setIsError] = useState<boolean>(false)
   const redirecRoutePath = '/admin'
   const handleLogin: SubmitHandler<ILogin> = async (data: ILogin) => {
     try {
       setIsLoading(true)
+      setIsError(false)
       const res = await signIn('credentials', {
         redirect: false,
         email: data.email,
@@ -40,6 +42,7 @@ export const Login = () => {
         router.push(redirecRoutePath)
         router.refresh()
       }
+      setIsError(true)
       setIsLoading(false)
     } catch (error) {
 
@@ -54,6 +57,7 @@ export const Login = () => {
           </h2>
 
           <form onSubmit={handleSubmit(handleLogin)} className="mt-8">
+            {isError?(<p className="bg-meta-1/80 p-4 text-white rounded-md my-2">La connexion a échoué. Veuillez vérifier votre nom d'utilisateur et mot de passe et réessayer. </p>):null}
             <div className="space-y-5">
               <TextInput
                 labelText="Email"
@@ -174,7 +178,7 @@ export const Login = () => {
             />
 
             <div className="w-full max-w-md mx-auto xl:max-w-xl">
-              <h4 className="text-2xl font-bold text-center text-meta-2/95">
+              <h4 className="text-4xl font-bold text-center text-meta-2/95">
                 Acceptez les paiements <span className="text-meta-7"> mobiles</span> et <span className="text-meta-7">bancaires</span> dès maintenant.
               </h4>
               <p className="leading-relaxed text-center text-white/80 mt-2.5">
