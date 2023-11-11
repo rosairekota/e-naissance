@@ -160,7 +160,7 @@ export const Login = () => {
             height={10}
             alt="image"
           /> */}
-          <h1 className="text-4xl font-bold text-meta-2">Swyftpay</h1>
+          <h1 className="text-4xl font-bold text-meta-2">SwyftPay</h1>
         </div>
         <div className="hidden lg:flex items-center justify-center px-4 py-10 sm:py-16 lg:py-24 bg-gray-50 sm:px-6 lg:px-8 h-full">
           <div>
