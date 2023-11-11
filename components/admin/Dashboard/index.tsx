@@ -40,8 +40,7 @@ export const Dashboard: React.FC<DashboardProps> = ({session}) => {
                 <TabsContent value={balanceTab}> <PaiementsKpi /></TabsContent>
                 <TabsContent value={paymentTab}>   <PaiementsKpi /></TabsContent>
             </Tabs>
-            {tab}
-            {session?.user.email}
+      
             <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
                 <TransactionChart />
                 {tab === paymentTab ? (<PaymentChart />) : <ChargeChart />}
