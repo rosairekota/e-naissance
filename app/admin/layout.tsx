@@ -3,7 +3,7 @@ import "../globals.css";
 import "../data-tables-css.css";
 import "../satoshi.css";
 import { useState, useEffect } from "react";
-import Loader from "@/components/common/Loader";
+import Loader from "@/components/ui/Loader";
 
 import Sidebar from "@/components/admin/Sidebar";
 import Header from "@/components/admin/Header";

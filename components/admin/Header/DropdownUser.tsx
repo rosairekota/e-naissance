@@ -2,16 +2,22 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const {user} = useSelector((state:RootState)=>state.auth)
 
   const trigger = useRef<any>(null);
   const dropdown = useRef<any>(null);
   const router = useRouter()
   const handleLogout = (e: any) => {
     e.preventDefault()
+    signOut()
     router.push('/auth/signin')
+    router.refresh()
   }
 
   // close on click outside
@@ -50,16 +56,16 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            Rosaire Kota
+            {user?.email}
           </span>
-          <span className="block text-xs">Admin</span>
+          <span className="block text-xs">{user?.roles[0]?.role.slug}</span>
         </span>
 
         <span className="h-12 w-12 rounded-full">
           <Image
             width={112}
             height={112}
-            src={"/images/user/profile.png"}
+            src={"/images/user/user-profile.png"}
             className="rounded-full"
             alt="User"
           />
