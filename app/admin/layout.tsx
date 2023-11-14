@@ -7,6 +7,9 @@ import Loader from "@/components/ui/Loader";
 
 import Sidebar from "@/components/admin/Sidebar";
 import Header from "@/components/admin/Header";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { UserSupportSidebar } from "@/components/admin/Sidebar/UserSupportSidebar";
 
 export default function AdminLayout({
   children,
@@ -14,6 +17,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { user } = useSelector((state: RootState) => state.auth)
 
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -30,10 +34,14 @@ export default function AdminLayout({
           ) : (
             <div className="flex h-screen overflow-hidden">
               {/* <!-- ===== Sidebar Start ===== --> */}
-              <Sidebar
+              {user?.isMerchant ? (<Sidebar
                 sidebarOpen={sidebarOpen}
                 setSidebarOpen={setSidebarOpen}
-              />
+              />) : (<UserSupportSidebar
+                sidebarOpen={sidebarOpen}
+                setSidebarOpen={setSidebarOpen}
+              />)}
+
               {/* <!-- ===== Sidebar End ===== --> */}
 
               {/* <!-- ===== Content Area Start ===== --> */}

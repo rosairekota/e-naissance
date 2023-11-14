@@ -1,2 +1,2 @@
 export { PaiementsKpi} from "./PaiementsKpi"
-export { BalanceKpi} from "./BalanceKpi"
+export { UserSupportKpi} from "./UserSupportKpi"
