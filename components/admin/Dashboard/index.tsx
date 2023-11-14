@@ -19,21 +19,15 @@ import { useSession } from "next-auth/react";
 export const Dashboard = () => {
     const { data: session } = useSession();
     const dispatch = useDispatch<AppDispatch>()
-    const [merchants, setMerchants] = useState<Array<any>>([])
-   const findAllMerchants =async ()=>{
-    const data = (await fetch(`http://143.110.169.188:3800/api/merchant/find-all-by-paginate`, {method:'GET', headers: {
-        'Content-type': 'application/json',
- // notice the Bearer before your token
-    },})).json()
-    setMerchants(await data)
-   }
+
+   
     useEffect(() => {
         if (session?.user) {
             dispatch(setUser(session.user))
         }
-        findAllMerchants()
+     
 
-    }, [session?.accessToken])
+    }, [dispatch, session?.accessToken, session?.user])
  
     const renderKpis = () => {
         return (<>{session?.user?.isMerchant ? (

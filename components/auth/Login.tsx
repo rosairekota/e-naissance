@@ -71,7 +71,7 @@ export const Login = () => {
                 name="email"
                 errors={errors}
                 placeholder="Entrer une adresse mail"
-                type={"text"}
+                type={"email"}
               />
 
               <TextInput
