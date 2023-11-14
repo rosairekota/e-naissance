@@ -10,6 +10,7 @@ import { signIn } from "next-auth/react";
 import { Metadata } from "next";
 import { TextInput } from "@/components/ui/inputs/TextInput";
 import { Spinner } from "@/components/ui/Spinner";
+import { LeftFormSection } from "../admin/form/LeftFormSection";
 export const metadata: Metadata = {
   title: "Signup Page | Next.js E-commerce Dashboard Template",
   description: "This is Signup page for TailAdmin Next.js",
@@ -56,7 +57,10 @@ const SignUp: React.FC = () => {
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
-        <section className="flex items-center justify-center px-4 py-10 bg-whiter sm:px-6 sm:py-16 lg:py-24 h-auto md:h-screen">
+      
+
+       <LeftFormSection/>
+       <section className="flex items-center justify-center px-4 py-10 bg-whiter sm:px-6 sm:py-16 lg:py-24 h-auto md:h-screen">
           <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
             <h2 className="text-3xl font-bold leading-tight text-primary-800 mt-10 lg:mt-0 text-center">
               Créer un compte
@@ -144,7 +148,7 @@ const SignUp: React.FC = () => {
                 Créer compte avec Google
               </button>
 
-              <div className="mt-2 text-base text-gray-600">
+              <div className="mt-2 text-base text-gray-600 ">
                 Vous avez déjà un compte ?{" "}
                 <Link
                   href="/auth/signin"
@@ -153,78 +157,6 @@ const SignUp: React.FC = () => {
                   Se connecter
                 </Link>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-primary-900 relative isolate">
-          <div className="absolute left-20 top-1/2 -translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2">
-            <svg
-              viewBox="0 0 558 558"
-              width="558"
-              height="558"
-              fill="none"
-              aria-hidden="true"
-              className="animate-rotating"
-            >
-              <defs>
-                <linearGradient
-                  id=":S4:"
-                  x1="79"
-                  y1="16"
-                  x2="105"
-                  y2="237"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#fff"></stop>
-                  <stop offset="1" stopColor="#fff" stopOpacity="0"></stop>
-                </linearGradient>
-              </defs>
-              <path
-                opacity=".2"
-                d="M1 279C1 125.465 125.465 1 279 1s278 124.465 278 278-124.465 278-278 278S1 432.535 1 279Z"
-                stroke="#fff"
-              ></path>
-              <path
-                d="M1 279C1 125.465 125.465 1 279 1"
-                stroke="url(#:S4:)"
-                strokeLinecap="round"
-              ></path>
-            </svg>
-          </div>
-          <div
-            aria-hidden="true"
-            className=" pointer-events-none absolute inset-x-0 top-60 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-          >
-            <div
-              style={{
-                clipPath:
-                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-              }}
-              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w[36.125rem]
-             -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-primary-800
-             sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]  opacity-30"
-            />
-          </div>
-          <div className="hidden relative lg:flex justify-center items-center my-20">
-            {/* <Image
-              src={"/images/logo.png"}
-              className=""
-              width={200}
-              height={10}
-              alt="image"
-            /> */}
-            <h1 className="text-5xl font-bold text-meta-2">SwyftPay</h1>
-          </div>
-          <div className="hidden lg:flex items-center justify-center bg-gray-50 h-full -mt-26">
-            <div className="flex flex-col justify-center items-center w-full">
-              <Image
-                src={"/images/credit-cart.png"}
-                className="w-full lg:w-[70%] float-none lg:float-right mx-auto mb-4"
-                width={1000}
-                height={200}
-                alt="image"
-              />
             </div>
           </div>
         </section>
