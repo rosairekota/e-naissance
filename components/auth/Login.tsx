@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
+import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { loginSchemaValidation } from "@/validators/login.schema";
@@ -10,12 +10,12 @@ import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { Spinner } from "../ui/Spinner";
 type ILogin = {
-  email: string
-  password: string
-}
+  email: string;
+  password: string;
+};
 
 export const Login = () => {
-  const router = useRouter()
+  const router = useRouter();
   const {
     control,
     register,
@@ -23,41 +23,44 @@ export const Login = () => {
     formState: { errors },
   } = useForm<ILogin>({
     resolver: yupResolver(loginSchemaValidation),
-  })
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [isError, setIsError] = useState<boolean>(false)
-  const redirecRoutePath = '/admin'
+  });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const redirecRoutePath = "/admin";
   const handleLogin: SubmitHandler<ILogin> = async (data: ILogin) => {
     try {
-      setIsLoading(true)
-      setIsError(false)
-      const res = await signIn('credentials', {
+      setIsLoading(true);
+      setIsError(false);
+      const res = await signIn("credentials", {
         redirect: false,
         email: data.email,
         password: data.password,
-        callbackUrl: 'http://localhost:3000/auth/signin',
-      })
-      console.log("resStatus:", res?.status)
+        callbackUrl: "http://localhost:3000/auth/signin",
+      });
+      console.log("resStatus:", res?.status);
       if (!res?.error) {
-        router.push(redirecRoutePath)
-        router.refresh()
+        router.push(redirecRoutePath);
+        router.refresh();
       }
-      setIsError(true)
-      setIsLoading(false)
-    } catch (error) {
-
-    }
-  }
+      setIsError(true);
+      setIsLoading(false);
+    } catch (error) {}
+  };
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
       <section className="flex items-center justify-center px-4 py-10 bg-whiter sm:px-6 lg:px-8 sm:py-16 lg:py-24 h-screen">
         <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
           <h2 className="text-3xl font-bold leading-tight text-primary-800 sm:text-3xl text-center">
-            Se Connecter
+            Connexion
           </h2>
 
           <form onSubmit={handleSubmit(handleLogin)} className="mt-8">
-            {isError?(<p className="bg-meta-1/80 p-4 text-white rounded-md my-2">La connexion a échouée. Veuillez vérifier votre nom d&apos;utilisateur et mot de passe et réessayer. </p>):null}
+            {isError ? (
+              <p className="bg-meta-1/80 p-4 text-white rounded-md my-2">
+                La connexion a échouée. Veuillez vérifier votre nom
+                d&apos;utilisateur et mot de passe et réessayer.{" "}
+              </p>
+            ) : null}
             <div className="space-y-5">
               <TextInput
                 labelText="Email"
@@ -65,7 +68,7 @@ export const Login = () => {
                 name="email"
                 errors={errors}
                 placeholder="Entrer une adresse mail"
-                type={'text'}
+                type={"text"}
               />
 
               <TextInput
@@ -74,13 +77,16 @@ export const Login = () => {
                 name="password"
                 errors={errors}
                 placeholder="Entrer le mot de passe"
-                type={'password'}
-              > <Link
-                href="#"
-                className="text-sm font-medium text-primary-800 hover:underline hover:text-primary-900 focus:text-primary-900"
+                type={"password"}
               >
+                {" "}
+                <Link
+                  href="#"
+                  className="text-sm font-medium text-primary-800 hover:underline hover:text-primary-900 focus:text-primary-900"
+                >
                   Mot de passe oublié ?
-                </Link></TextInput>
+                </Link>
+              </TextInput>
 
               <div>
                 <button
@@ -88,7 +94,7 @@ export const Login = () => {
                   className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-primary-800 border border-transparent rounded-md focus:outline-none hover:bg-primary-900 focus:bg-primary-900 disabled:bg-primary-800/50"
                   disabled={isLoading}
                 >
-                      {isLoading ? (<Spinner/>) : "Se connecter"}
+                  {isLoading ? <Spinner /> : "Se connecter"}
                 </button>
               </div>
             </div>
@@ -112,34 +118,52 @@ export const Login = () => {
               Se connecter avec Google
             </button>
 
-            <p className="mt-2 text-base text-gray-600 flex justify-between">
+            <div className="mt-2 text-base text-gray-600">
               Vous n&apos;avez pas de compte ?{" "}
-              <a
-                href="#"
-                title=""
+              <Link
+                href="/auth/signup"
                 className="font-medium text-primary-800 transition-all duration-200 hover:text-primary-900 hover:underline focus:text-primary-900"
               >
                 Créer un nouveau compte
-              </a>
-            </p>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="bg-primary-900 relative isolate">
         <div className="absolute left-20 top-1/2 -translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2">
-          <svg viewBox="0 0 558 558" width="558" height="558" fill="none" aria-hidden="true"
-            className="animate-rotating">
+          <svg
+            viewBox="0 0 558 558"
+            width="558"
+            height="558"
+            fill="none"
+            aria-hidden="true"
+            className="animate-rotating"
+          >
             <defs>
-              <linearGradient id=":S4:" x1="79" y1="16" x2="105" y2="237" gradientUnits="userSpaceOnUse">
+              <linearGradient
+                id=":S4:"
+                x1="79"
+                y1="16"
+                x2="105"
+                y2="237"
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#fff"></stop>
                 <stop offset="1" stopColor="#fff" stopOpacity="0"></stop>
               </linearGradient>
             </defs>
-            <path opacity=".2"
+            <path
+              opacity=".2"
               d="M1 279C1 125.465 125.465 1 279 1s278 124.465 278 278-124.465 278-278 278S1 432.535 1 279Z"
-              stroke="#fff"></path>
-            <path d="M1 279C1 125.465 125.465 1 279 1" stroke="url(#:S4:)" strokeLinecap="round"></path>
+              stroke="#fff"
+            ></path>
+            <path
+              d="M1 279C1 125.465 125.465 1 279 1"
+              stroke="url(#:S4:)"
+              strokeLinecap="round"
+            ></path>
           </svg>
         </div>
         <div
@@ -168,9 +192,8 @@ export const Login = () => {
         </div>
         <div className="hidden lg:flex items-center justify-center px-4 py-10 sm:py-16 lg:py-24 bg-gray-50 sm:px-6 lg:px-8 h-full">
           <div>
-
             <Image
-              src={'/images/credit-cart.png'}
+              src={"/images/credit-cart.png"}
               className="w-full lg:w-4/5 float-none lg:float-right mx-auto mb-4"
               width={1000}
               height={200}
@@ -179,10 +202,13 @@ export const Login = () => {
 
             <div className="w-full max-w-md mx-auto xl:max-w-xl">
               <h4 className="text-4xl font-bold text-center text-meta-2/95">
-                Acceptez les paiements <span className="text-meta-7"> mobiles</span> et <span className="text-meta-7">bancaires</span> dès maintenant.
+                Acceptez les paiements{" "}
+                <span className="text-meta-7"> mobiles</span> et{" "}
+                <span className="text-meta-7">bancaires</span> dès maintenant.
               </h4>
               <p className="leading-relaxed text-center text-white/80 mt-2.5">
-                Optimisez vos transactions avec notre plateforme fintech. Commencez à accepter les paiements mobiles dès maintenant.
+                Optimisez vos transactions avec notre plateforme fintech.
+                Commencez à accepter les paiements mobiles dès maintenant.
               </p>
 
               <div className="flex items-center justify-center mt-10 space-x-3">
