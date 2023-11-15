@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth";
 
 
 export const metadata: Metadata = {
-  title: "SwyftPay|merchants page",
+  title: "SwyftPay|users page",
   description: "Bienvenue",
   // other metadata
 };

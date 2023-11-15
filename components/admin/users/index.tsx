@@ -11,7 +11,7 @@ export const UsersList = () => {
     const handleOpenDialog =()=>{ setIsOpen(!isOpen)}
     return (
         <div>
-            <Breadcrumb pageName="Marchants" />
+            <Breadcrumb pageName="Utilisateurs" />
             <div className="w-full flex justify-end py-3">
                 <Button
                     onClick={handleOpenDialog}
