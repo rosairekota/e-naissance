@@ -1,6 +1,5 @@
 import Breadcrumb from "@/components/ui/Breadcrumbs/Breadcrumb";
 import TableOne from "@/components/ui/Tables/TableOne";
-import TableThree from "@/components/ui/Tables/TableThree";
 import TableTwo from "@/components/ui/Tables/TableTwo";
 
 import { Metadata } from "next";
@@ -18,7 +17,6 @@ const TablesPage = () => {
       <div className="flex flex-col gap-10">
         <TableOne />
         <TableTwo />
-        <TableThree />
       </div>
     </>
   );

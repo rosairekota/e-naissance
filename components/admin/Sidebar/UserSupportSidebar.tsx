@@ -288,9 +288,9 @@ export const UserSupportSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps
               {/* <!-- Menu Item Tables --> */}
               <li>
                 <Link
-                  href="#"
+                  href={'/admin/merchants'}
                   className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-primary-400/10 dark:hover:bg-meta-4 ${
-                    pathname.includes("tables") && "bg-primary-400/10 dark:bg-meta-4"
+                    pathname.includes("merchants") && "bg-primary-400/10 dark:bg-meta-4"
                   }`}
                 >
                   <svg
@@ -323,9 +323,9 @@ export const UserSupportSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps
               </li>
               <li>
                 <Link
-                  href="#"
+                  href={'/admin/users'}
                   className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-primary-400/10 dark:hover:bg-meta-4 ${
-                    pathname.includes("profile") && "bg-primary-400/10 dark:bg-meta-4"
+                    pathname.includes("users") && "bg-primary-400/10 dark:bg-meta-4"
                   }`}
                 >
                   <svg

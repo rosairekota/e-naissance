@@ -45,7 +45,7 @@ const brandData: BRAND[] = [
   },
 ];
 
-const TableFour: React.FC = () => {
+const MerchantList: React.FC = () => {
   return (
     <div className="col-span-12 xl:col-span-7">
       <div className="rounded-xl border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
@@ -121,4 +121,4 @@ const TableFour: React.FC = () => {
   );
 };
 
-export default TableFour;
+export default MerchantList;
