@@ -5,7 +5,7 @@ import { MANAGEMENT_API_URL } from '@/config';
 import { IAuth } from '@/types/auth';
 import { IUser } from '@/types/user.interface';
 import { JWT } from 'next-auth/jwt';
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/auth/signin'
   },
