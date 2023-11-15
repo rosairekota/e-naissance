@@ -1,20 +1,10 @@
 import { IUser } from "@/types/user";
 
-const usersData: IUser[] = [
-  {
-    firstName: "user1",
-    lastName:'rkota',
-    email:'rosairekota@gmail.com',
-    isMerchant: false,
-    isActive: false,
-    roles: [],
-    merchant:{
-      name:'test'
-    }
-  }
-];
 
-export const UsersList = () => {
+type UserListProps={
+  users:IUser[]|null
+}
+export const UsersList :React.FC<UserListProps> = ({users}) => {
   return (
     <div className="rounded-xl  bg-white px-5 pt-6 pb-2.5  dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="max-w-full overflow-x-auto">
@@ -42,7 +32,7 @@ export const UsersList = () => {
             </tr>
           </thead>
           <tbody>
-            {usersData.map((user, key) => (
+            {users?.map((user, key) => (
               <tr key={key}>
                 <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                   <h5 className="font-medium  dark:text-white">
@@ -77,12 +67,12 @@ export const UsersList = () => {
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <p
                     className={`inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium ${
-                      user.roles.length !== 0 
+                      user?.userRoles?.length !== 0 
                         ? "text-success bg-success" : ""
                       
                     }`}
                   >
-                    {user?.roles[0]?.role?.name}
+                    {(user?.userRoles && user.userRoles?.length !== 0)? user?.userRoles[0].role?.slug :null}
                   </p>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
