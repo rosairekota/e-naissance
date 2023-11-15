@@ -17,7 +17,8 @@ export interface IUser {
     refreshToken?: string;
     isActive?: boolean;
     isMerchant?: boolean;
-    roles: IUserRole[],
+    roles?: IUserRole[],
+    userRoles?:IUserRole[],
     lastLogin?: string;
     phone?: string;
     NbFailedAttempts?: number;

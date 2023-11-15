@@ -2,13 +2,33 @@
 import Breadcrumb from '@/components/ui/Breadcrumbs/Breadcrumb'
 import { UsersList as UsersTable } from '@/components/admin/users/UsersList'
 import TableTwo from '@/components/ui/Tables/TableTwo'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { UserForm } from './UserForm'
+import { fetchUsers } from '@/services/users'
+import { useSession } from 'next-auth/react'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState, setUsers } from '@/store'
 
 export const UsersList = () => {
     const [isOpen, setIsOpen]= useState<boolean>(false)
+    const [isLoading, setIsLoading]= useState<boolean>(false)
     const handleOpenDialog =()=>{ setIsOpen(!isOpen)}
+    const { data: session } = useSession();
+    const dispatch  = useDispatch<AppDispatch>()
+    const {users} = useSelector((state:RootState)=>state.users)
+
+
+    const getUsers = async ()=>{
+        setIsLoading(true)
+          const data = await  fetchUsers(session?.accessToken)
+          dispatch(setUsers(data))
+          setIsLoading(false)
+
+    }
+    useEffect(()=>{
+        getUsers()
+    },[session?.accessToken])
     return (
         <div>
             <Breadcrumb pageName="Utilisateurs" />
@@ -22,7 +42,7 @@ export const UsersList = () => {
             </div>
             <UserForm  isOpen={isOpen} handleOpen={handleOpenDialog}/>
             <div className="flex flex-col gap-10">
-                <UsersTable/>
+                <UsersTable users= {users}/>
             </div>
 
         </div>
