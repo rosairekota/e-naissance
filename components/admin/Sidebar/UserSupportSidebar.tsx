@@ -150,7 +150,7 @@ export const UserSupportSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps
                 <Link
                   href="#"
                   className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-primary-400/10 dark:hover:bg-meta-4 ${
-                    pathname.includes("calendar") &&
+                    pathname.includes("tansactions") &&
                     "bg-primary-400/10 dark:bg-meta-4"
                   }`}
                 >
@@ -169,7 +169,9 @@ export const UserSupportSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps
                   </svg>
                   Transactions
                 </Link>
+                
               </li>
+              
               {/* <!-- Menu Item Calendar --> */}
 
               {/* <!-- Menu Item Profile --> */}
@@ -228,7 +230,7 @@ export const UserSupportSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps
                             fill="white"
                           />
                         </svg>
-                        Demande de requête
+                        Daily Operations
                         <svg
                           className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
                             open && "rotate-180"
@@ -262,7 +264,7 @@ export const UserSupportSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps
                                 "text-white"
                               }`}
                             >
-                              En cours
+                              Credit
                             </Link>
                           </li>
                           <li>
@@ -273,7 +275,7 @@ export const UserSupportSidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps
                                 "text-white"
                               }`}
                             >
-                              Terminée
+                              Debit
                             </Link>
                           </li>
                         </ul>
