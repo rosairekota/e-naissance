@@ -17,7 +17,7 @@ export const UsersList = () => {
                     onClick={handleOpenDialog}
                     className="inline-flex items-center justify-center px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-primary-800 dark:bg-boxdark border border-transparent rounded-lg focus:outline-none hover:bg-primary-900 focus:bg-primary-900 disabled:bg-primary-800/50"
                 >
-                    Créer un nouveau marchant
+                    Créer un nouvel utilisateur
                 </Button>
             </div>
             <UserForm  isOpen={isOpen} handleOpen={handleOpenDialog}/>
