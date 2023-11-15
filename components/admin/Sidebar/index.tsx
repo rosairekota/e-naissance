@@ -114,7 +114,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <Link
                   href="/admin"
                   className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-primary-400/10 dark:hover:bg-meta-4 ${
-                    pathname.includes("dashboard") &&
+                    pathname.includes("admin") &&
                     "bg-primary-400/10 dark:bg-meta-4"
                   }`}
                 >

@@ -1,4 +1,4 @@
-import { MerchantsList } from "@/components/admin/merchants";
+import { UsersList } from "@/components/admin/users";
 import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
   // other metadata
 };
 
-export default async function MerchanPage() {
+export default async function UsersPage() {
   return (
     <>
-      <MerchantsList />
+      <UsersList />
     </>
   );
 }

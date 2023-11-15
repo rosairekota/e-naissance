@@ -1,5 +1,5 @@
 import NextAuth from 'next-auth';
-import { IUser } from './types/user.interface';
+import { IUser } from './types/user';
 import { JWT } from 'next-auth';
 
 declare module 'next-auth' {

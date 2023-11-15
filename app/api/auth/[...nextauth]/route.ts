@@ -3,7 +3,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import NextAuth, { Awaitable, NextAuthOptions } from "next-auth"
 import { MANAGEMENT_API_URL } from '@/config';
 import { IAuth } from '@/types/auth';
-import { IUser } from '@/types/user.interface';
+import { IUser } from '@/types/user';
 import { JWT } from 'next-auth/jwt';
 const authOptions: NextAuthOptions = {
   pages: {
@@ -19,7 +19,7 @@ const authOptions: NextAuthOptions = {
         username: { label: "Email", type: "email", placeholder: "jonhdoe@gmail.com" },
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials: IAuth | any, req: any):Promise<IUser|null> {
+      async authorize(credentials: IAuth | any, req: any):Promise<IUser|null|any> {
         console.log("credentials:", credentials)
         if (!credentials.email || !credentials?.password) return null
         const res = await fetch(`${MANAGEMENT_API_URL}/auth/login`, {
