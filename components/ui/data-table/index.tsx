@@ -1,5 +1,5 @@
 'use client'
-import React,{ReactElement, useMemo} from "react";
+import React,{ReactElement, ReactNode, useMemo} from "react";
 import {
   useTable,
   useGlobalFilter,
@@ -20,15 +20,21 @@ import { SortDownIcon, SortUpIcon, SortIcon } from "@/components/ui/icons";
 import clsx from "clsx";
 import { Button } from "@/components/ui/button";
 
+
 export type IColumns={
   Header: string,
   accessor: string,
-  Cell: (data:unknown)=>ReactElement
+  Cell?: (data:any)=> ReactElement
 }
 export interface IDataTable {
   columns: IColumns[];
   data: readonly object[]
 }
+
+
+
+
+
 // Define a default UI for filtering
 function GlobalFilter({
   preGlobalFilteredRows,
@@ -98,22 +104,7 @@ export function SelectColumnFilter({
   );
 }
 
-export function StatusPill({ value }:any) {
-  const status = value ? value.toLowerCase() : "unknown";
 
-  return (
-    <span
-      className={clsx(
-        "px-3 py-1 uppercase leading-wide font-bold text-xs rounded-full shadow-sm",
-        status.startsWith("active") ? "bg-green-100 text-green-700" : null,
-        status.startsWith("inactive") ? "bg-yellow-100 text-yellow-700" : null,
-        status.startsWith("offline") ? "bg-red-100 text-red-700" : null
-      )}
-    >
-      {status}
-    </span>
-  );
-}
 
 
 function DataTable({ columns, data }:IDataTable) {
