@@ -9,26 +9,57 @@ import { fetchUsers } from '@/services/users'
 import { useSession } from 'next-auth/react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState, setUsers } from '@/store'
+import DataTable, { StatusPill } from '@/components/ui/data-table'
+import { IUser } from '@/types/user'
 
 export const UsersList = () => {
-    const [isOpen, setIsOpen]= useState<boolean>(false)
-    const [isLoading, setIsLoading]= useState<boolean>(false)
-    const handleOpenDialog =()=>{ setIsOpen(!isOpen)}
+    const [isOpen, setIsOpen] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const handleOpenDialog = () => { setIsOpen(!isOpen) }
     const { data: session } = useSession();
-    const dispatch  = useDispatch<AppDispatch>()
-    const {users} = useSelector((state:RootState)=>state.users)
+    const dispatch = useDispatch<AppDispatch>()
+    const { users } = useSelector((state: RootState) => state.users)
+    const columns = React.useMemo(
+        () => [
+            {
+                Header: "Nom",
+                accessor: "firstName"
+            },
+            {
+                Header: "Type",
+                accessor: "isMerchant",
+                Cell: ({isMerchant}:IUser) => {
+                    return (<>
+                        {isMerchant ? 'Marchant' : 'User Support'}
+                    </>)
+                }
+            },
 
+            {
+                Header: "Status",
+                accessor: "isActive",
+                Cell: ({isActive}:IUser) => {
+                    return (<>
+                        {isActive ? (<span className='bg-green-100 text-green-700'>Actif</span>) : <span className='bg-green-100 text-green-700'>Inactif</span>}
+                    </>)
+                }
+            },
 
-    const getUsers = async ()=>{
+        ],
+        []
+    );
+
+    const getUsers = async () => {
         setIsLoading(true)
-          const data = await  fetchUsers(session?.accessToken)
-          dispatch(setUsers(data))
-          setIsLoading(false)
+        const data = await fetchUsers(session?.accessToken)
+        dispatch(setUsers(data))
+        setIsLoading(false)
 
     }
-    useEffect(()=>{
+
+    useEffect(() => {
         getUsers()
-    },[session?.accessToken])
+    }, [session?.accessToken])
     return (
         <div>
             <Breadcrumb pageName="Utilisateurs" />
@@ -40,9 +71,10 @@ export const UsersList = () => {
                     Créer un nouvel utilisateur
                 </Button>
             </div>
-            <UserForm  isOpen={isOpen} handleOpen={handleOpenDialog}/>
+            <UserForm isOpen={isOpen} handleOpen={handleOpenDialog} />
             <div className="flex flex-col gap-10">
-                <UsersTable users= {users}/>
+                {users && users?.length !== 0 ? (<DataTable columns={columns} data={users} />) : null}
+
             </div>
 
         </div>
