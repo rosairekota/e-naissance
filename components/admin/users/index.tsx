@@ -28,7 +28,7 @@ export const UsersList = () => {
             {
                 Header: "Type",
                 accessor: "isMerchant",
-                Cell: ({isMerchant}:IUser) => {
+                Cell: ({ isMerchant }: IUser) => {
                     return (<>
                         {isMerchant ? 'Marchant' : 'User Support'}
                     </>)
@@ -38,9 +38,51 @@ export const UsersList = () => {
             {
                 Header: "Status",
                 accessor: "isActive",
-                Cell: ({isActive}:IUser) => {
+                Cell: ({ isActive }: IUser) => {
                     return (<>
-                        {isActive ? (<span className='bg-green-100 text-green-700'>Actif</span>) : <span className='bg-green-100 text-green-700'>Inactif</span>}
+                        <p
+                            className={`inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium ${isActive
+                                    ? "text-success bg-success" : "text-danger bg-danger"
+
+                                }`}
+                        >
+                            {isActive ? 'Actif' : 'Inactif'}
+                        </p>
+                    </>)
+                }
+            },
+            {
+                Header: "Role",
+                accessor: "email",
+                Cell: ({userRoles,email}: IUser) => {
+                    return (<>
+                        <p
+                    className={`inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium ${
+                      userRoles?.length !== 0 
+                        ? "text-success bg-success" : ""
+                      
+                    }`}
+                  >
+                       {JSON.stringify(email)}
+                    {/* {(userRoles && userRoles?.length !== 0)? userRoles[0].role?.slug :null} */}
+                  </p>
+                    </>)
+                }
+            },
+            {
+                Header: "Actions",
+                accessor: "action",
+                Cell: (user: IUser) => {
+                    return (<>
+                        <p
+                    className={`inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium ${
+                      user?.userRoles?.length !== 0 
+                        ? "text-success bg-success" : ""
+                      
+                    }`}
+                  >
+                    {(user?.userRoles && user.userRoles?.length !== 0)? user?.userRoles[0].role?.slug :null}
+                  </p>
                     </>)
                 }
             },

@@ -50,7 +50,7 @@ export const Login = () => {
     } catch (error) {}
   };
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
+    <div className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden grainy">
       <section className="flex items-center justify-center px-4 py-10 bg-whiter sm:px-6 lg:px-8 sm:py-16 lg:py-24 h-screen">
         <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
           <h2 className="text-3xl font-bold leading-tight text-primary-800 sm:text-3xl text-center">

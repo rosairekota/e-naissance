@@ -1,12 +1,14 @@
 'use client'
-import React,{useMemo} from "react";
+import React,{ReactElement, useMemo} from "react";
 import {
   useTable,
   useGlobalFilter,
   useAsyncDebounce,
   useFilters,
   useSortBy,
-  usePagination
+  usePagination,
+  TableInstance,
+  HeaderGroup
 } from "react-table";
 import {
   ChevronLeftIcon,
@@ -18,6 +20,15 @@ import { SortDownIcon, SortUpIcon, SortIcon } from "@/components/ui/icons";
 import clsx from "clsx";
 import { Button } from "@/components/ui/button";
 
+export type IColumns={
+  Header: string,
+  accessor: string,
+  Cell: (data:unknown)=>ReactElement
+}
+export interface IDataTable {
+  columns: IColumns[];
+  data: readonly object[]
+}
 // Define a default UI for filtering
 function GlobalFilter({
   preGlobalFilteredRows,
@@ -105,7 +116,7 @@ export function StatusPill({ value }:any) {
 }
 
 
-function DataTable({ columns, data }:any) {
+function DataTable({ columns, data }:IDataTable) {
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
@@ -124,7 +135,7 @@ function DataTable({ columns, data }:any) {
     state,
     preGlobalFilteredRows,
     setGlobalFilter
-  }:any = useTable(
+  }: Partial<TableInstance<object>|any> = useTable(
     {
       columns,
       data
@@ -138,7 +149,7 @@ function DataTable({ columns, data }:any) {
   // Render the UI for your table
   return (
     <>
-      {headerGroups?.map((headerGroup:any) =>
+      {headerGroups?.map((headerGroup: HeaderGroup) =>
         headerGroup.headers.map((column:any) =>
           column?.Filter ? (
             <div key={column?.id}>{column.render("Filter")}</div>
@@ -154,7 +165,7 @@ function DataTable({ columns, data }:any) {
                 className="min-w-full divide-y divide-black/10"
               >
                 <thead className="bg-gray-50">
-                  {headerGroups.map((headerGroup:any, index:number) => (
+                  {headerGroups.map((headerGroup: HeaderGroup, index:number) => (
                     <tr {...headerGroup.getHeaderGroupProps()} key={index}>
                       {headerGroup.headers.map((column:any, i:number) => (
                         // Add the sorting props to control sorting. For this example
@@ -216,7 +227,7 @@ function DataTable({ columns, data }:any) {
           </div>
         </div>
       </div>
-      <div className="py-3 flex items-center justify-between">
+      <div className="flex items-center justify-between ">
         <div className="flex-1 flex justify-between sm:hidden">
           <Button onClick={() => previousPage()} disabled={!canPreviousPage}>
             Previous
@@ -225,10 +236,10 @@ function DataTable({ columns, data }:any) {
             Next
           </Button>
         </div>
-        <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-          <div className="flex gap-x-2">
+        <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between ">
+          <div className="flex gap-x-2 items-center p-2">
             <span className="text-sm text-gray-700">
-              Page <span className="font-medium">{state.pageIndex + 1}</span> of{" "}
+              Page <span className="font-medium">{state.pageIndex + 1}</span> Sur
               <span className="font-medium">{pageOptions.length}</span>
             </span>
             <label>
