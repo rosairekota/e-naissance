@@ -5,10 +5,73 @@ import TableTwo from '@/components/ui/Tables/TableTwo'
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { MerchantForm } from './MerchantForm'
-
+import { IMerchant } from '@/types/merchant'
+import DataTable from '@/components/ui/data-table'
+const merchantData: IMerchant[] = [
+    {
+      name: "Merchant1",
+      organisation:{
+        name:'A'
+      },
+      usersCount: 0.0,
+      status: "Active",
+    },
+    {
+      name: "Merchant2",
+      usersCount: 59.0,
+      organisation:{
+        name:'A'
+      },
+      status: "Active",
+    },
+    {
+      name: "Merchant3",
+      usersCount: 99.0,
+      organisation:{
+        name:'A'
+      },
+      status: "blocked",
+    },
+    {
+      name: "Merchant4",
+      usersCount: 59.0,
+      status: "Pending",
+    },
+  ];
+  
 export const MerchantsList = () => {
+    
     const [isOpen, setIsOpen]= useState<boolean>(false)
     const handleOpenDialog =()=>{ setIsOpen(!isOpen)}
+    const columns = React.useMemo(
+        () => [
+          {
+            Header: "Name",
+            accessor: "name"
+          },
+          {
+            Header: "Organisation",
+            accessor: "organisation.name"
+          },
+          {
+            Header: "Nombre",
+            accessor: "usersCount",
+           // Cell: LocateCell,
+          },
+          {
+            Header: "Status",
+            accessor: "status",
+           // Cell: StatusPill
+          },
+          {
+            Header: "Role",
+            accessor: "role",
+           // Filter: SelectColumnFilter,
+            filter: "includes"
+          }
+        ],
+        []
+      );
     return (
         <div>
             <Breadcrumb pageName="Marchants" />
@@ -22,7 +85,7 @@ export const MerchantsList = () => {
             </div>
             <MerchantForm  isOpen={isOpen} handleOpen={handleOpenDialog}/>
             <div className="flex flex-col gap-10">
-                <MerchantTable />
+            <DataTable columns={columns} data={merchantData} />
             </div>
 
         </div>

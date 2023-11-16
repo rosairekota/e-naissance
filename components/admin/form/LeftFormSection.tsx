@@ -3,7 +3,7 @@ import React from 'react'
 
 export const LeftFormSection = () => {
   return (
-    <section className="bg-primary-900 relative isolate">
+    <section className="bg-[#291FB3] relative isolate">
     <div className="absolute left-20 top-1/2 -translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2">
       <svg
         viewBox="0 0 558 558"
