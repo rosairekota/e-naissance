@@ -11,8 +11,9 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
-    <>
-      <Dashboard />
-    </>
+    
+     <div className="p-4 md:p-6 2xl:p-10">
+     <Dashboard />
+      </div>
   );
 }

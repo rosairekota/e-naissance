@@ -185,9 +185,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               {/* <!-- Menu Item Tables --> */}
               <li>
                 <Link
-                  href="#"
+                  href="/admin/birth-record"
                   className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-primary-400/10 dark:hover:bg-meta-4 ${
-                    pathname.includes("tables") && "bg-primary-400/10 dark:bg-meta-4"
+                    pathname.includes("birth-record") && "bg-primary-400/10 dark:bg-meta-4"
                   }`}
                 >
                   <svg

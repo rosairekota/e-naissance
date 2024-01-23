@@ -9,7 +9,7 @@ import Sidebar from "@/components/admin/Sidebar";
 import Header from "@/components/admin/Header";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
-import { UserSupportSidebar } from "@/components/admin/Sidebar/UserSupportSidebar";
+
 
 export default function AdminLayout({
   children,
@@ -28,7 +28,7 @@ export default function AdminLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        <div className="dark:bg-boxdark-2 dark:text-bodydark light:grainy">
+        <div className="grainy dark:bg-boxdark-2 dark:text-bodydark">
           {loading ? (
             <Loader />
           ) : (
@@ -51,7 +51,7 @@ export default function AdminLayout({
 
                 {/* <!-- ===== Main Content Start ===== --> */}
                 <main>
-                  <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+                  <div className="mx-auto max-w-screen-2xl  dark:bg-boxdark-2">
                     {children}
                   </div>
                 </main>
