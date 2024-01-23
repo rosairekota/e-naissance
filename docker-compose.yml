@@ -1,0 +1,9 @@
+version: "3.1"
+services:
+  nuxt-app:
+    container_name: e-naissance-ui
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
