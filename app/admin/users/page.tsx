@@ -1,6 +1,5 @@
-import { UsersList } from "@/components/admin/users";
+// import { UsersList } from "@/components/admin/users";
 import { Metadata } from "next";
-import { getServerSession } from "next-auth";
 
 
 export const metadata: Metadata = {
@@ -12,7 +11,7 @@ export const metadata: Metadata = {
 export default async function UsersPage() {
   return (
     <>
-      <UsersList />
+      user
     </>
   );
 }
