@@ -33,18 +33,18 @@ const CardPaymentStats: React.FC<CardPaymentStatsProps> = ({
           </h4>
           <span className="text-sm font-medium">{title}</span>
             <div>
-          <div className='mt-2'>{children}</div>
+          <h2 className='mt-2'>{children}</h2>
          </div>
         </div>
        
         <span
-          className={`flex items-center gap-1 text-sm font-medium cursor-pointer ${
+          className={`flex items-center gap-1 text-xl font-medium cursor-pointer ${
             levelUp && 'text-meta-3'
           } ${levelDown && 'text-meta-5'} `}
         >
           {detail}
 
-          {levelUp && (
+          {/* {levelUp && (
             <svg
               className="fill-meta-3"
               width="10"
@@ -73,7 +73,7 @@ const CardPaymentStats: React.FC<CardPaymentStatsProps> = ({
                 fill=""
               />
             </svg>
-          )}
+          )} */}
         </span>
       </div>
     </div>

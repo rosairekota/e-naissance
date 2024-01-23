@@ -1,13 +1,15 @@
 
 import CredentialsProvider from 'next-auth/providers/credentials';
 import NextAuth, { Awaitable, NextAuthOptions } from "next-auth"
-import { MANAGEMENT_API_URL } from '@/config';
 import { IAuth } from '@/types/auth';
 import { IUser } from '@/types/user';
 import { JWT } from 'next-auth/jwt';
+import { fetchUserMe, loginUser } from '@/services/userService';
+
 const authOptions: NextAuthOptions = {
   pages: {
-    signIn: '/auth/signin'
+    signIn: '/login',
+    newUser: '/register'
   },
   session:{
     strategy:'jwt'
@@ -20,30 +22,29 @@ const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials: IAuth | any, req: any):Promise<IUser|null|any> {
-        console.log("credentials:", credentials)
+       try {
         if (!credentials.email || !credentials?.password) return null
-        const res = await fetch(`${MANAGEMENT_API_URL}/auth/login`, {
-          method: 'POST',
-          body: JSON.stringify({email: credentials.email, password: credentials.password}),
-          headers: { "Content-Type": "application/json" }
-        })
-        const result = await res.json()
-
+        const {res, result} = await loginUser(credentials)
         if (res.ok && result) {
-          return {
-            id: result?.user?.id,
-            email: result?.user?.email,
-            firstName:  result?.user?.firstName,
-            lastName:  result?.user?.lastName,
-            isActive: result?.user?.isActive,
-            isMerchant: result?.user?.isMerchant,
-            roles:  result?.user?.userRoles,
-            accessToken: result?.accessToken,
-            refreshToken: result?.refreshToken,
-            ...result?.user
+          const me  = await fetchUserMe(result.data.access_token)
+          if (me.code=== 200) {
+            return {
+              id: me?.data?.id,
+              email: me?.data?.email,
+              name:  me?.data?.name,
+              roles:  me?.data?.roles,
+              accessToken: result?.data?.access_token,
+              ...result?.data
+            }
           }
+      
+          
+        } else{
+          throw new Error("Oups! echec ")
         }
+       } catch (error) {
         throw new Error("Cet utilisateur n'existe pas")
+       }
       },
     })
   ],
@@ -54,10 +55,9 @@ const authOptions: NextAuthOptions = {
       return token
     },
     async session({ session, token, user }) {
-      session.accessToken  = token.accessToken;
-      session.refreshToken= token.refreshToken
+     
+      session.accessToken  =  token?.user?.accessToken as string;
       session.user = token.user
-      console.log("session-auth:", session )
       return session
     },
   
@@ -70,3 +70,4 @@ const authOptions: NextAuthOptions = {
 const handler = NextAuth(authOptions)
 
 export { handler as GET, handler as POST }
+

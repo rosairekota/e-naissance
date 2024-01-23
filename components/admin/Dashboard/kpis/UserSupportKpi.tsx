@@ -6,59 +6,53 @@ export const UserSupportKpi = () => {
   return (
     <>  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
       <CardDataStats
-        total="Africell"
-        detail="Details"
+        total="Taux de mortalité"
+        detail="40%"
         levelUp
         icon
         ={africellIcon()}>
 
         <ul>
-          <li>0 Successful</li>
-          <li> 0 Failed</li>
-          <li> 0 Pending</li>
-          <li> 0 Submitted</li>
+        <li>F: 50000 </li>
+        <li>G : 1000 </li>
+        <li>Total : 51000 </li>
         </ul>
       </CardDataStats>
       <CardDataStats
-        total="Airtel"
-        detail="Details"
+        total="Taux de naissance"
+        detail="60%"
         levelUp
         icon
         ={airtelIcon()}>
 
         <ul>
-          <li>0 Successful</li>
-          <li> 0 Failed</li>
-          <li> 0 Pending</li>
-          <li> 0 Submitted</li>
+        <li>F: 50000 </li>
+          <li>G : 1000 </li>
+          <li>Total : 51000 </li>
         </ul>
       </CardDataStats>
       <CardDataStats
-        total="Orange"
+        total="Ess"
         detail="Details"
         levelUp
         icon
         ={orangeIcon()}>
 
-        <ul>
-          <li>0 Successful</li>
-          <li> 0 Failed</li>
-          <li> 0 Pending</li>
-          <li> 0 Submitted</li>
+        <ul className='mt-12'>
+        <li>Nombre total: 500 </li>
         </ul>
       </CardDataStats>
       <CardDataStats
-        total="Vodacom"
+        total="Acte delivrés"
         detail="Details"
         levelUp
         icon
         ={vodacomIcon()}>
 
         <ul>
-          <li>0 Successful</li>
-          <li> 0 Failed</li>
-          <li> 0 Pending</li>
-          <li> 0 Submitted</li>
+          <li>F: 50000 </li>
+          <li>G : 1000 </li>
+          <li>Total : 51000 </li>
         </ul>
       </CardDataStats>
       

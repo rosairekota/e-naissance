@@ -60,27 +60,26 @@ export const LeftFormSection = () => {
         height={10}
         alt="image"
       /> */}
-      <h1 className="text-4xl font-bold text-meta-2">SwyftPay</h1>
+      <h1 className="text-4xl font-extrabold text-meta-2 uppercase py-3">E-Naissance</h1>
     </div>
     <div className="hidden lg:flex items-center justify-center px-4 py-10 sm:py-16 lg:py-24 bg-gray-50 sm:px-6 lg:px-8 h-full">
       <div>
+        <div className='flex justify-center relative'>
         <Image
-          src={"/images/credit-cart.png"}
-          className="w-full lg:w-4/5 float-none lg:float-right mx-auto mb-4"
-          width={1000}
-          height={200}
+          src={"/images/login/acte.png"}
+          className="w-full lg:w-4/5 rounded-full mb-4"
+          width={500}
+          height={500}
           alt="image"
         />
+        </div>
 
         <div className="w-full max-w-md mx-auto">
-          <h4 className="text-2xl font-bold text-center text-meta-2/95">
-            Acceptez les paiements{" "}
-            <span className="text-meta-7"> mobiles</span> et{" "}
-            <span className="text-meta-7">bancaires</span> dès maintenant.
+          <h4 className="text-2xl font-medium text-center text-meta-2/95">
+          Bienvenue sur le Portail des Actes de Naissance. 
           </h4>
-          <p className="leading-relaxed text-center text-white/80 mt-2.5">
-            Optimisez vos transactions avec notre plateforme fintech.
-            Commencez à accepter les paiements mobiles dès maintenant.
+          <p className="leading-relaxed text-center text-white/80 mt-2.5 ">
+         Simplifiez vos démarches administratives et imprimez vos actes en toute simplicité. Connectez-vous maintenant pour accéder à vos données vitales.
           </p>
 
           <div className="flex items-center justify-center mt-10 space-x-3">
@@ -96,3 +95,4 @@ export const LeftFormSection = () => {
   </section>
   )
 }
+//  Connectez-vous pour gérer les actes de naissance de manière efficace et sécurisée. 

@@ -12,8 +12,8 @@ const options: ApexOptions = {
   chart: {
     type: "donut",
   },
-  colors: ["#CE1602", "#a33e74", "#ff0000", "#FF7900"],
-  labels: ["Vodacom", "Africell", "Airtel", "orange"],
+  colors: ["#CE1602", "#a33e74"],
+  labels: ["Mortalité", "Naissance"],
   legend: {
     show: true,
     position: "bottom",
@@ -52,7 +52,7 @@ const options: ApexOptions = {
 
 export const ChargeChart: React.FC = () => {
   const [state, setState] = useState<ChartThreeState>({
-    series: [65, 34, 12, 56],
+    series: [35, 64],
   });
 
   return (
@@ -60,7 +60,7 @@ export const ChargeChart: React.FC = () => {
       <div className="mb-3 justify-between gap-4 sm:flex">
         <div>
           <h5 className="text-xl font-semibold text-black dark:text-white">
-            Charges/Telecom
+            Mortalité/Naissance(Global)
           </h5>
         </div>
         <div>

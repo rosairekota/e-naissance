@@ -1,1 +1,1 @@
-export  { MANAGEMENT_API_URL }  from './api-urls'
+export  { SHOPBUY_API_URL }  from './api-urls'

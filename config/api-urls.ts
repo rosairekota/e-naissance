@@ -1,1 +1,1 @@
-export const MANAGEMENT_API_URL = process.env.MANAGEMENT_API_URL
+export const  SHOPBUY_API_URL = process.env.SHOPBUY_API_URL

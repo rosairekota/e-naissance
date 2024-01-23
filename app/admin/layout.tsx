@@ -33,14 +33,10 @@ export default function AdminLayout({
             <Loader />
           ) : (
             <div className="flex h-screen overflow-hidden">
-              {/* <!-- ===== Sidebar Start ===== --> */}
-              {user?.isMerchant ? (<Sidebar
+              <Sidebar
                 sidebarOpen={sidebarOpen}
                 setSidebarOpen={setSidebarOpen}
-              />) : (<UserSupportSidebar
-                sidebarOpen={sidebarOpen}
-                setSidebarOpen={setSidebarOpen}
-              />)}
+                />
 
               {/* <!-- ===== Sidebar End ===== --> */}
 
