@@ -1,20 +1,15 @@
 'use client'
-import { MouseEventHandler, useRef } from "react";
+import { MouseEventHandler, useRef,useEffect} from "react";
 import { Button } from "@/components/ui/button";
-import { IBirthCertificate } from "@/types/birth-certificate";
 import { Margin, usePDF } from "react-to-pdf";
 import ReactToPrint from "react-to-print";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState, setBirthCertToReporting } from "@/store";
 import { redirect } from "next/navigation";
 import Breadcrumb from "@/components/ui/Breadcrumbs/Breadcrumb";
-export type BirthProps = {
-  data: IBirthCertificate;
-};
 
-export const BirthCertReporting: React.FC<BirthProps> = () => {
+export const BirthCertReporting = () => {
  const {birthCertToReporting: data} = useSelector((state:RootState)=>state.birthCert)
  const dispatch = useDispatch<AppDispatch>()
  const ref = useRef<any>();
@@ -25,7 +20,7 @@ export const BirthCertReporting: React.FC<BirthProps> = () => {
     dispatch(setBirthCertToReporting(data1))
  },[dispatch])
   const { toPDF, targetRef } = usePDF({
-    filename: "usepdf-example.pdf",
+    filename: "certificat-de-naissance.pdf",
     page: { margin: Margin.MEDIUM }
   });
   return (
