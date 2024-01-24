@@ -16,11 +16,11 @@ export const menus :IMenu[]=[
         path:'/admin/birth-certificate',
         icon:BirthRecordIcon
     },
-    {
-        name:'Acte de Naissances',
-        path:'/admin/birth-record',
-        icon:BirthRecordIcon
-    },
+    // {
+    //     name:'Acte de Naissances',
+    //     path:'/admin/birth-record',
+    //     icon:BirthRecordIcon
+    // },
     {
         name:'Utilisateur',
         path:"/admin/users",

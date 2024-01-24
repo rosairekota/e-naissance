@@ -5,6 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface BirthCertState{
     birthCertsUnDeliveredFilters:IBirthCertificate[],
     birthCertsDelivered:IBirthCertificate[] | null,
+    birthCertToReporting: IBirthCertificate,
     isLoading: boolean
     
 }
@@ -12,6 +13,7 @@ export interface BirthCertState{
 const initialState: BirthCertState = {
     birthCertsUnDeliveredFilters: [],
     birthCertsDelivered: null,
+    birthCertToReporting:{} as unknown as IBirthCertificate,
     isLoading: false
   }
 export const birthCertSlice = createSlice({
@@ -30,8 +32,12 @@ export const birthCertSlice = createSlice({
             state.isLoading = false
             
         },
+        setBirthCertToReporting(state, {payload}){
+            state.birthCertToReporting= JSON.parse(payload)
+            
+        },
     }
 })
 
-export const {setBirthCertDelivered, setBirthCertUnDeliveredFilters} = birthCertSlice.actions
+export const {setBirthCertDelivered, setBirthCertUnDeliveredFilters, setBirthCertToReporting} = birthCertSlice.actions
 export default birthCertSlice
