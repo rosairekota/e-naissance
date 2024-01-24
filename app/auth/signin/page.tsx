@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Login | SwyftPay",
+  title: "Login | ANICNS",
   description: "Connectez-vous",
   // other metadata
 };

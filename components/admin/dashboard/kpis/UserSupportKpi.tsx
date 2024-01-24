@@ -32,14 +32,16 @@ export const UserSupportKpi = () => {
         </ul>
       </CardDataStats>
       <CardDataStats
-        total="Ess"
+        total="Certificat delivrés"
         detail="Details"
         levelUp
         icon
         ={orangeIcon()}>
 
-        <ul className='mt-12'>
-        <li>Nombre total: 500 </li>
+        <ul>
+        <li>F: 5000 </li>
+          <li>G : 10000 </li>
+        <li>Nombre total: 15000 </li>
         </ul>
       </CardDataStats>
       <CardDataStats

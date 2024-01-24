@@ -14,7 +14,7 @@ export const BirthRecord = () => {
     <div>
       <Tabs defaultValue={newRecordTab} className="w-full " onValueChange={(value:string)=>{setSelected(value)}}>
         <TabsList>
-          <TabsTrigger value={newRecordTab} className={ (selected === newRecordTab) ?"text-primary-900 rounded-md mt-3 bg-white drop-shadow-2":""}>Nouvel acte de naissances</TabsTrigger>
+          <TabsTrigger value={newRecordTab} className={ (selected === newRecordTab) ?"text-primary-900 rounded-md mt-3 bg-white drop-shadow-2":""}>Rechercher un acte de naissances</TabsTrigger>
           <TabsTrigger value={listOfBirthRecordsTab} className={ (selected === listOfBirthRecordsTab) ?"text-primary-900 rounded-md mt-3 bg-white drop-shadow-2":""}>Actes delivrées</TabsTrigger>
         </TabsList>
         <TabsContent value={newRecordTab}>

@@ -5,7 +5,7 @@ import "../satoshi.css";
 import { useState, useEffect } from "react";
 import Loader from "@/components/ui/Loader";
 
-import Sidebar from "@/components/admin/Sidebar";
+import Sidebar from "@/components/admin/sidebar";
 import Header from "@/components/admin/Header";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";

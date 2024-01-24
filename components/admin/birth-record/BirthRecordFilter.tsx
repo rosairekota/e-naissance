@@ -76,7 +76,6 @@ export const BirthRecordFilter = () => {
         </div>
       </form>
       <div className="pt-6">
-          <h1> Info enfants  table </h1>
           <BirthRecordUnDeliveredFilterList/>
        </div>
     </div>

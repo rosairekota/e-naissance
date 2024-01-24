@@ -23,7 +23,7 @@ import { RootState } from '@/store';
 export const  BirthRecordUnDeliveredFilterList = () => {
     // isOpen state
     const [isOpen, setIsOpen] = React.useState<boolean>(false)
-    const { birthRecordsUnDeliveredFilters} = useSelector((state:RootState)=> state.birthRecords)
+    const { birthRecordsUnDeliveredFilters} = useSelector((state:RootState)=> state.birthRecord)
     const handleOpenForm =()=>{
         setIsOpen(!isOpen)
     }

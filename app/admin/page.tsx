@@ -1,10 +1,10 @@
-import { Dashboard } from "@/components/admin/Dashboard";
+import { Dashboard } from "@/components/admin/dashboard";
 import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 
 
 export const metadata: Metadata = {
-  title: "SwyftPay",
+  title: "E-Naissance | Admin",
   description: "Bienvenue",
   // other metadata
 };

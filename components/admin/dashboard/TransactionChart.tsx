@@ -163,7 +163,7 @@ export const TransactionChart: React.FC = () => {
               <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-primary"></span>
             </span>
             <div className="w-full">
-              <p className="font-semibold text-primary"> Commune de NGAMBA: Mortalité/Naissance</p>
+              <p className="font-semibold text-primary"> Ville de Kinshasa: Mortalité/Naissance</p>
             </div>
           </div>
         </div>
