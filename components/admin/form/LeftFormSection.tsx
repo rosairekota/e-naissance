@@ -66,7 +66,7 @@ export const LeftFormSection = () => {
     <div className='w-full flex relative justify-center '> 
              <Image
             src={"/images/logo/anicns.png"}
-            className="absolute -top-2"
+            className="absolute top-24 sm:-top-2"
             width={80}
             height={80}
             alt="image"

@@ -1,10 +1,10 @@
 import React from 'react'
 
-export const Spinner = () => {
+export const LoginSpinner = () => {
   return (
     <>
       <svg
-    className=" w-10 h-10 animate-spin"
+    className=" w-8 h-8 animate-spin"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"

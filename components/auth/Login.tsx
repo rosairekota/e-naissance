@@ -8,10 +8,11 @@ import { loginSchemaValidation } from "@/validators/login.schema";
 import { TextInput } from "../ui/inputs/TextInput";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
-import { Spinner } from "../ui/Spinner";
+
 import { LeftFormSection } from "../admin/form/LeftFormSection";
+import { LoginSpinner as  Spinner } from "../ui/Spinner";
 type ILogin = {
-  email: string;
+  username: string;
   password: string;
 };
 
@@ -34,11 +35,11 @@ export const Login = () => {
       setIsError(false);
       const res = await signIn("credentials", {
         redirect: false,
-        email: data.email,
+        username: data.username,
         password: data.password,
-        callbackUrl: "http://localhost:3001/auth/signin",
+        callbackUrl: "http://localhost:3000/auth/signin",
       });
-      console.log("resStatus:", res?.status);
+     
       if (!res?.error) {
         router.push(redirecRoutePath);
         router.refresh();
@@ -69,12 +70,12 @@ export const Login = () => {
             ) : null}
             <div className="space-y-5">
               <TextInput
-                labelText="Email"
+                labelText="Nom d'utilisateur"
                 control={control}
-                name="email"
+                name="username"
                 errors={errors}
-                placeholder="Entrer une adresse mail"
-                type={"email"}
+                placeholder="Entrer le nom d'utilisateur"
+                type={"text"}
               />
 
               <TextInput

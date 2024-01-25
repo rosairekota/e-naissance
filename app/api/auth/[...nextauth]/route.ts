@@ -8,8 +8,8 @@ import { fetchUserMe, loginUser } from '@/services/userService';
 
 const authOptions: NextAuthOptions = {
   pages: {
-    signIn: '/login',
-    newUser: '/register'
+    signIn: '/auth/signin',
+    newUser: '/auth/signup'
   },
   session:{
     strategy:'jwt'
@@ -23,20 +23,23 @@ const authOptions: NextAuthOptions = {
       },
       async authorize(credentials: IAuth | any, req: any):Promise<IUser|null|any> {
        try {
-        if (!credentials.email || !credentials?.password) return null
-        const {res, result} = await loginUser(credentials)
+        if (!credentials.username || !credentials?.password) return null
+        const {res, result, accessToken} = await loginUser(credentials)
         if (res.ok && result) {
-          const me  = await fetchUserMe(result.data.access_token)
-          if (me.code=== 200) {
+           const user = result[0]
             return {
-              id: me?.data?.id,
-              email: me?.data?.email,
-              name:  me?.data?.name,
-              roles:  me?.data?.roles,
-              accessToken: result?.data?.access_token,
-              ...result?.data
+              id: user?.etablissementReferenceId,
+              name:  user?.nom,
+              firstName: user.prenom,
+              lastName: user.postnom,
+              email:user?.courriel,
+              username: user?.nomUtilisateur,
+              role: user.fonction,
+              hospitalName: user?.nomEtablissementReference,
+              isActive: user.active,
+              accessToken: accessToken,
             }
-          }
+          
       
           
         } else{
@@ -55,7 +58,6 @@ const authOptions: NextAuthOptions = {
       return token
     },
     async session({ session, token, user }) {
-     
       session.accessToken  =  token?.user?.accessToken as string;
       session.user = token.user
       return session

@@ -17,7 +17,7 @@ import { IBirthCertificate } from "@/types/birth-certificate";
 import Loader from "@/components/ui/Loader";
 import { setIsCertSearched } from "@/store/birth-certificate/birth-certSlice";
 import { TableSkeleton } from "@/components/ui/skeleton/TableSkeleton";
-import { Spinner } from "@/components/ui/Spinner";
+import { Spinner } from "@/components/ui/admin-spinner";
 
 const jsonDataTest: IBirthCertificate[] = jsonData;
 

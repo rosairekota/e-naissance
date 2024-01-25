@@ -2,6 +2,7 @@ import { IMerchant } from "./merchant";
 
 export interface IUser {
     id?: string;
+    name?: string;
     firstName?: string;
     lastName?: string;
     email?: string
@@ -18,15 +19,13 @@ export interface IUser {
     isActive?: boolean;
     isMerchant?: boolean;
     roles?: IUserRole[],
-    userRoles?:IUserRole[],
+    role?: string,
     lastLogin?: string;
     phone?: string;
     NbFailedAttempts?: number;
     temporaryLockedAt?: string;
-    merchantId?: string;
-    merchant?: IMerchant
-    userSupportId?: string;
     organizationId?: string;
+    hospitalName?: string
 }
 
 export interface IUserRole{
