@@ -51,8 +51,8 @@ export const Login = () => {
   };
   return (
    <div className="flex justify-center items-center bg-black-2  bg-cover bg-center overflow-hidden h-screen py-6" style={{ backgroundImage: "url('/images/login/acte.png')" }}>
-      <div className="absolute inset-0 bg-black/60"></div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden grainy rounded-2xl z-30 h-full ">
+      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden grainy rounded-2xl z-30 h-full shadow-2xl shadow-primary-900/70">
        <LeftFormSection/>
       <section className="flex items-center justify-center px-4 py-10 sm:px-6 lg:px-8 sm:py-16  h-screen">
         <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">

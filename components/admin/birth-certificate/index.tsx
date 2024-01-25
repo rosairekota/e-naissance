@@ -12,8 +12,8 @@ export const BirthCertificate = () => {
  
   return (
     <div>
-      <Tabs defaultValue={newCertTab} className="w-full " onValueChange={(value:string)=>{setSelected(value)}}>
-        <TabsList>
+      <Tabs defaultValue={newCertTab} className="w-full" onValueChange={(value:string)=>{setSelected(value)}}>
+        <TabsList className="w-full flex justify-start overflow-x-scroll sm:overflow-hidden">
           <TabsTrigger value={newCertTab} className={ (selected === newCertTab) ?"text-primary-900 rounded-md mt-3 bg-white drop-shadow-2":""}>Rechercher un certificat de naissances</TabsTrigger>
           <TabsTrigger value={listOfBirthCertsTab} className={ (selected === listOfBirthCertsTab) ?"text-primary-900 rounded-md mt-3 bg-white drop-shadow-2":""}>Certificats delivrées</TabsTrigger>
         </TabsList>

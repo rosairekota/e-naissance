@@ -61,7 +61,17 @@ export const LeftFormSection = () => {
         alt="image"
       /> */}
       <h1 className="text-4xl font-extrabold text-meta-2 uppercase py-3">E-Naissance</h1>
+       
     </div>
+    <div className='w-full flex relative justify-center '> 
+             <Image
+            src={"/images/logo/anicns.png"}
+            className="absolute -top-2"
+            width={80}
+            height={80}
+            alt="image"
+          />
+          </div>
     <div className="hidden lg:flex items-center justify-center px-4 py-10 sm:py-16 lg:py-24 bg-gray-50 sm:px-6 lg:px-8 h-full">
       <div>
         <div className='flex justify-center relative'>
@@ -76,12 +86,12 @@ export const LeftFormSection = () => {
 
         <div className="w-full max-w-md mx-auto">
           <h4 className="text-2xl font-medium text-center text-meta-2/95">
-          Bienvenue sur le Portail des Actes de Naissance. 
+          Bienvenue sur le Portail des Certifcats de Naissance. 
           </h4>
           <p className="leading-relaxed text-center text-white/80 mt-2.5 ">
          Simplifiez vos démarches administratives et imprimez vos actes en toute simplicité. Connectez-vous maintenant pour accéder à vos données vitales.
           </p>
-
+          
           <div className="flex items-center justify-center mt-10 space-x-3">
             <div className="bg-primary-800 rounded-full w-20 h-1.5 animate-pulse"></div>
 
@@ -89,7 +99,9 @@ export const LeftFormSection = () => {
 
             <div className="bg-meta-7 rounded-full w-12 h-1.5 animate-pulse"></div>
           </div>
+         
         </div>
+       
       </div>
     </div>
   </section>

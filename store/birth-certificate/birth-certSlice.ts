@@ -6,7 +6,9 @@ export interface BirthCertState{
     birthCertsUnDeliveredFilters:IBirthCertificate[],
     birthCertsDelivered:IBirthCertificate[] | null,
     birthCertToReporting: IBirthCertificate,
-    isLoading: boolean
+    searchUnDeliveredCert: string,
+    isLoading: boolean,
+    isCertSearched:boolean,
     
 }
 
@@ -14,6 +16,8 @@ const initialState: BirthCertState = {
     birthCertsUnDeliveredFilters: [],
     birthCertsDelivered: null,
     birthCertToReporting:{} as unknown as IBirthCertificate,
+    searchUnDeliveredCert: '',
+    isCertSearched:false,
     isLoading: false
   }
 export const birthCertSlice = createSlice({
@@ -36,8 +40,22 @@ export const birthCertSlice = createSlice({
             state.birthCertToReporting= JSON.parse(payload)
             
         },
+        setSearchUnDeliveredCert(state, {payload}){
+            state.searchUnDeliveredCert= payload
+            
+        },
+        setIsCertSearched(state,  {payload}){
+            state.isCertSearched= payload
+            
+        },
     }
 })
 
-export const {setBirthCertDelivered, setBirthCertUnDeliveredFilters, setBirthCertToReporting} = birthCertSlice.actions
+export const {
+setBirthCertDelivered, 
+setBirthCertUnDeliveredFilters, 
+setBirthCertToReporting, 
+setSearchUnDeliveredCert,
+setIsCertSearched
+} = birthCertSlice.actions
 export default birthCertSlice

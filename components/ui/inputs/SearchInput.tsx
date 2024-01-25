@@ -19,7 +19,7 @@ const SearchInput:React.FC<Props> = ({className, value, onChange,...props}) => {
      {...props}
       className={`${cn(
         className,
-        "block w-full p-3 text-black placeholder-gray-500 transition-all duration-200 border border-primary-800/25 rounded-md bg-gray-50 focus:outline-none focus:border-primary-800 focus:bg-white caret-primary-800 mt-2.5"
+        "block w-full py-2 px-3 text-black placeholder-gray-500 transition-all duration-200 border-2 border-primary-800/25 rounded-md bg-gray-50 focus:outline-none focus:border-primary-800 focus:bg-white caret-primary-800 mt-2.5"
       )}`}
     />
   );

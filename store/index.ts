@@ -22,4 +22,4 @@ export type AppDispatch = typeof store.dispatch
 export {setUser, logout} from "./auth/authSlice"
 export {setUsers} from "./users/usersSlice"
 export  {setBirthRecordsDelivered, setBirthRecordsUnDeliveredFilters} from "./birth-record/birth-recordsSlice"
-export  {setBirthCertDelivered, setBirthCertUnDeliveredFilters, setBirthCertToReporting} from "./birth-certificate/birth-certSlice"
+export  {setBirthCertDelivered, setBirthCertUnDeliveredFilters, setBirthCertToReporting, setSearchUnDeliveredCert} from "./birth-certificate/birth-certSlice"

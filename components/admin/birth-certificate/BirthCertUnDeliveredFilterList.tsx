@@ -27,12 +27,19 @@ const handleRedirectToReporting = ()=>{
 
   const columns: ColumnDef<IBirthCertificate>[] = [
     {
+      accessorKey: "referenceNumber",
+      header: "NUMERO DE REFERENCE",
+      cell: ({ row }) => (
+        <div>
+        {row.original.motherCode}
+        </div>
+      ),
+    },
+    {
       accessorKey: "name",
       header: "NOMS",
       cell: ({ row }) => (
-        <div className="capitalize">{`${row.getValue("name")} ${row.getValue(
-          "firstName"
-        )}`}</div>
+        <div className="capitalize">{`${row.original.firstName} - ${row.original.lastName} ${row.original.name}`}</div>
       ),
     },
     {
@@ -43,13 +50,13 @@ const handleRedirectToReporting = ()=>{
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            NOM DE LA MERE
+            LIEU DE NAISSANCE
             <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
         );
       },
       cell: ({ row }) => (
-        <div className="lowercase pl-4">{row.getValue("montherName")}</div>
+        <div className="capitalize pl-4">{row.original.deliveryPlace}</div>
       ),
     },
     {
@@ -68,9 +75,9 @@ const handleRedirectToReporting = ()=>{
             variant="default"
             size="sm"
             onClick={handleRedirectToReporting}
-            className="bg-primary-800 text-white w-15 h-5 py-3 px-10"
+            className="bg-primary-800 text-white h-5 py-4 px-6"
           >
-            Generer pdf 
+            Générer le certificat 
           </Button>
         );
       },
