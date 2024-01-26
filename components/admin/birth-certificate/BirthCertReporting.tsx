@@ -11,6 +11,7 @@ import Breadcrumb from "@/components/ui/Breadcrumbs/Breadcrumb";
 
 export const BirthCertReporting = () => {
  const {birthCertToReporting: data} = useSelector((state:RootState)=>state.birthCert)
+ const {user} = useSelector((state:RootState)=>state.auth)
  const dispatch = useDispatch<AppDispatch>()
  const ref = useRef<any>();
   
@@ -68,7 +69,7 @@ export const BirthCertReporting = () => {
           <h1 className="text-xl font-medium">
             REPUBLIQUE DEMOCRATIQUE DU CONGO
           </h1>
-          <h2 className="text-xl font-semibold ">CLINIQUE BONNHEUR A VIE</h2>
+          <h2 className="text-xl font-semibold uppercase ">{user?.hospitalName}</h2>
         </div>
         <h1 className="text-2xl font-bold my-4 text-center underline uppercase text-primary-300">
           Certificat de Naissance
@@ -86,7 +87,7 @@ export const BirthCertReporting = () => {
         
           <p>
           Nom,Post-nom et Prénom de 
-          l&apos;enfant: <span className="font-bold">  {data.lastName} {data.firstName} {data.name}   </span>
+          l&apos;enfant: <span className="font-bold">  {data.lastName} {data.firstName} {data.name}   </span>. Numéro de reference:  <span className="font-bold">  {data.referenceNumber} </span>
           </p>
           <p className="flex justify-end  p-6">
           Fait à Kinshasa,le { new Date().getFullYear()}
