@@ -9,7 +9,7 @@ import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { Metadata } from "next";
 import { TextInput } from "@/components/ui/inputs/TextInput";
-import { Spinner } from "@/components/ui/Spinner";
+import { LoginSpinner as Spinner } from "@/components/ui/Spinner";
 import { LeftFormSection } from "../admin/form/LeftFormSection";
 export const metadata: Metadata = {
   title: "Signup Page | Next.js E-commerce Dashboard Template",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 type ILogin = {
-  email: string;
+  username: string;
   password: string;
 };
 
@@ -41,7 +41,7 @@ const SignUp: React.FC = () => {
       setIsError(false);
       const res = await signIn("credentials", {
         redirect: false,
-        email: data.email,
+        email: data.username,
         password: data.password,
         callbackUrl: "http://localhost:3000/auth/signin",
       });
@@ -94,12 +94,12 @@ const SignUp: React.FC = () => {
                 </div>
                 <div className="flex flex-col lg:flex-row lg:gap-3">
                   <TextInput
-                    labelText="Email"
+                    labelText="Nom d'utilisateur"
                     control={control}
-                    name="email"
+                    name="username"
                     errors={errors}
                     placeholder="Veuillez saisir votre  mail"
-                    type={"email"}
+                    type={"text"}
                   />
                   <TextInput
                     labelText="Numéro téléphone"
