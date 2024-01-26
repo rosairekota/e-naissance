@@ -6,7 +6,7 @@ export const UserSupportKpi = () => {
   return (
     <>  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">
       <CardDataStats
-        total="Taux de mortalité"
+        total="Nombre de décès"
         detail="40%"
         levelUp
         icon
@@ -19,7 +19,7 @@ export const UserSupportKpi = () => {
         </ul>
       </CardDataStats>
       <CardDataStats
-        total="Taux de naissance"
+        total="Nombre de naissances"
         detail="60%"
         levelUp
         icon
