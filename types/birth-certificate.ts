@@ -14,4 +14,5 @@ export interface IBirthCertificate {
   township: string;
   deliveryPlace: string;
   dateOfIssue: string;
+  referenceNumber:string
 }
