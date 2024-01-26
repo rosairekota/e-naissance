@@ -42,10 +42,10 @@ const redirectToRoute =()=>{
   const columns: ColumnDef<IBirthCertificate>[] = [
     {
       accessorKey: "referenceNumber",
-      header: "NUMERO DE REFERENCE",
+      header: "NUMERO DE REFERENCE ENFANT",
       cell: ({ row }) => (
         <div>
-        {row.original.motherCode}
+        {row.original.referenceNumber}
         </div>
       ),
     },
@@ -101,11 +101,18 @@ const redirectToRoute =()=>{
     <div>
       { isLoading?(<div>
         Traitement de l&apos;operation en cour.... Veuillez patienter SVP.
-      </div>):( <DataTable<ColumnDef<IBirthCertificate>[], IBirthCertificate[]>
+      </div>):(
+      <div>
+        <h2 className="font-bold uppercase mb-2">Informations sur la femme</h2>
+        <ul>
+          <li>Noms: {birthCertsUnDeliveredFilters && birthCertsUnDeliveredFilters[0].motherName}</li>
+        </ul>
+         <DataTable<ColumnDef<IBirthCertificate>[], IBirthCertificate[]>
         columns={columns}
         data={birthCertsUnDeliveredFilters}
         hideSearchBar={true}
-      />)}
+      />
+      </div>)}
      
     </div>
   );
