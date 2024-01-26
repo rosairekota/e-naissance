@@ -1,1 +1,1 @@
-export  { SHOPBUY_API_URL }  from './api-urls'
+export  { USSD_API_URL }  from './api-urls'
