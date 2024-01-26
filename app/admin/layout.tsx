@@ -7,8 +7,10 @@ import Loader from "@/components/ui/Loader";
 
 import Sidebar from "@/components/admin/sidebar";
 import Header from "@/components/admin/Header";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState, setLoadingApp, setUser } from "@/store";
+import { Toaster } from "sonner";
+import { useSession } from "next-auth/react";
 
 
 export default function AdminLayout({
@@ -18,19 +20,30 @@ export default function AdminLayout({
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user } = useSelector((state: RootState) => state.auth)
-
-  const [loading, setLoading] = useState<boolean>(true);
+  const  dispatch = useDispatch<AppDispatch>()
+  const { data: session } = useSession();
+ 
+  const {loadingApp, content} =useSelector((state: RootState) => state.app)
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
+    setTimeout(() => dispatch(setLoadingApp({loading:false})), 1000);
   }, []);
+
+  useEffect(() => {
+    if (session?.user) {
+        dispatch(setUser(session.user))
+    }
+ 
+
+}, [dispatch, session?.accessToken, session?.user])
 
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
+      <Toaster richColors position="top-right" />
         <div className="grainy dark:bg-boxdark-2 dark:text-bodydark">
-          {loading ? (
-            <Loader />
+          {loadingApp ? (
+            <Loader title={content}/>
           ) : (
             <div className="flex h-screen overflow-hidden">
               <Sidebar

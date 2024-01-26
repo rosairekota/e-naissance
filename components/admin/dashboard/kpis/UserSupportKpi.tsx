@@ -4,7 +4,7 @@ import CardDataStats from "@/components/ui/CardPaymentStats";
 
 export const UserSupportKpi = () => {
   return (
-    <>  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
+    <>  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">
       <CardDataStats
         total="Taux de mortalité"
         detail="40%"
@@ -44,7 +44,7 @@ export const UserSupportKpi = () => {
         <li>Nombre total: 15000 </li>
         </ul>
       </CardDataStats>
-      <CardDataStats
+      {/* <CardDataStats
         total="Acte delivrés"
         detail="Details"
         levelUp
@@ -56,7 +56,7 @@ export const UserSupportKpi = () => {
           <li>G : 1000 </li>
           <li>Total : 51000 </li>
         </ul>
-      </CardDataStats>
+      </CardDataStats> */}
       
     </div></>
   )

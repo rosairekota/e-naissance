@@ -16,17 +16,6 @@ import { useSession } from "next-auth/react";
 
 
 export const Dashboard = () => {
-    const { data: session } = useSession();
-    const dispatch = useDispatch<AppDispatch>()
-
-   
-    useEffect(() => {
-        if (session?.user) {
-            dispatch(setUser(session.user))
-        }
-     
-
-    }, [dispatch, session?.accessToken, session?.user])
  
     const renderKpis = () => {
         return (<UserSupportKPIs/>

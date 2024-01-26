@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
@@ -9,6 +9,9 @@ import { IBirthCertificate } from "@/types/birth-certificate";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import useLocalStorage from "@/hooks/useLocalStorage";
+import { toast } from "sonner";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState, setLoadingApp } from "@/store";
 
 
 type Props = {
@@ -19,10 +22,21 @@ export const BirthCertUnDeliveredFilterList: React.FC<Props> = ({
   birthCertsUnDeliveredFilters,
 }) => {
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const {birthCertToReporting} = useSelector((state:RootState)=>state.birthCert)
+  const  dispatch = useDispatch<AppDispatch>()
     
-const handleRedirectToReporting = ()=>{
-    localStorage.setItem('birthCertReporting', JSON.stringify(birthCertsUnDeliveredFilters[0]))
-   router.push('/admin/birth-certificate/reporting')
+const handleRedirectToReporting = async ()=>{
+  if (Object.keys(birthCertToReporting).length ===0) {
+    dispatch(setLoadingApp({loading:true, content:"Traitement de l'operation en cours.... Veuillez patienter SVP"}))
+    redirectToRoute()
+    setTimeout(() => dispatch(setLoadingApp({loading:false, content:"Traitement terminé"})), 1000);
+  }
+    redirectToRoute()
+}
+const redirectToRoute =()=>{
+  localStorage.setItem('birthCertReporting', JSON.stringify(birthCertsUnDeliveredFilters[0]))
+  router.push('/admin/birth-certificate/reporting')
 }
 
   const columns: ColumnDef<IBirthCertificate>[] = [
@@ -85,11 +99,14 @@ const handleRedirectToReporting = ()=>{
   ];
   return (
     <div>
-      <DataTable<ColumnDef<IBirthCertificate>[], IBirthCertificate[]>
+      { isLoading?(<div>
+        Traitement de l&apos;operation en cour.... Veuillez patienter SVP.
+      </div>):( <DataTable<ColumnDef<IBirthCertificate>[], IBirthCertificate[]>
         columns={columns}
         data={birthCertsUnDeliveredFilters}
         hideSearchBar={true}
-      />
+      />)}
+     
     </div>
   );
 };

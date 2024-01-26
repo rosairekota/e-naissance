@@ -27,6 +27,7 @@ const authOptions: NextAuthOptions = {
         const {res, result, accessToken} = await loginUser(credentials)
         if (res.ok && result) {
            const user = result[0]
+           console.log("user:", result[0])
             return {
               id: user?.etablissementReferenceId,
               name:  user?.nom,

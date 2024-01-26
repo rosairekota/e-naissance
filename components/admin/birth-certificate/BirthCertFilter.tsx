@@ -1,5 +1,5 @@
 "use client";
-import React, { MouseEventHandler, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BirthCertUnDeliveredFilterList } from "./BirthCertUnDeliveredFilterList";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,15 +9,15 @@ import {
   setBirthCertUnDeliveredFilters,
   setSearchUnDeliveredCert,
 } from "@/store";
-import { SearchIcon } from "lucide-react";
+import { InfoIcon, SearchIcon, X } from "lucide-react";
 import ResetIcon from "@/components/icons/ResetIcon";
 import SearchInput from "@/components/ui/inputs/SearchInput";
 import jsonData from "@/data/birth-certificate.json";
 import { IBirthCertificate } from "@/types/birth-certificate";
-import Loader from "@/components/ui/Loader";
 import { setIsCertSearched } from "@/store/birth-certificate/birth-certSlice";
-import { TableSkeleton } from "@/components/ui/skeleton/TableSkeleton";
 import { Spinner } from "@/components/ui/admin-spinner";
+import { Alert } from "@/components/ui/Alerts";
+import { toast } from "sonner";
 
 const jsonDataTest: IBirthCertificate[] = jsonData;
 
@@ -34,7 +34,7 @@ export const BirthCertFilter = () => {
   } = useSelector((state: RootState) => state.birthCert);
   const handleSearch = () => {
     if (searchUnDeliveredCert.trim() === "") {
-      alert("Veuillez entrer un numéro avant de lancer la recherche.");
+      toast.error(`Veuillez entrer un numéro avant de lancer la recherche.`)
       return;
     }
     setIsLoading(true);
@@ -52,6 +52,7 @@ export const BirthCertFilter = () => {
   };
   const onResetFilter = () => {
     dispatch(setIsCertSearched(false));
+    dispatch(setSearchUnDeliveredCert(''))
   };
 
   return (
@@ -113,7 +114,9 @@ export const BirthCertFilter = () => {
                <Spinner /> <p className="text-2xl">Veuillez patienter pendant le chargement des données...</p>
             </div>
           ) : birthCertsUnDeliveredFilters.length === 0 ? (
-            <NoDataMessage />
+           <div className="px-6 sm:px-12 lg:px-24 xl:px-48">
+             <Alert  description="  Aucune donnée disponible pour votre recherche" type="warning"/>
+           </div>
           ) : (
             <BirthCertUnDeliveredFilterList
               birthCertsUnDeliveredFilters={birthCertsUnDeliveredFilters}
@@ -125,14 +128,4 @@ export const BirthCertFilter = () => {
   );
 };
 
-function NoDataMessage() {
-  return (
-    <div className="xl:p-24">
-      <div className="bg-meta-6/80 p-3 xl:p-6 rounded-xl text-xl xl:text-2xl">
-        <p className="text-white font-medium text-center">
-          Aucune donnée disponible pour votre recherche
-        </p>
-      </div>
-    </div>
-  );
-}
+

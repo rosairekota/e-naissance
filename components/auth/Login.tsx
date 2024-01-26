@@ -8,9 +8,11 @@ import { loginSchemaValidation } from "@/validators/login.schema";
 import { TextInput } from "../ui/inputs/TextInput";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { Toaster, toast } from 'sonner'
 
 import { LeftFormSection } from "../admin/form/LeftFormSection";
 import { LoginSpinner as  Spinner } from "../ui/Spinner";
+import { Alert } from "../ui/Alerts";
 type ILogin = {
   username: string;
   password: string;
@@ -41,10 +43,12 @@ export const Login = () => {
       });
      
       if (!res?.error) {
+        toast.success(`La connexion a réussi avec succès!.`)
         router.push(redirecRoutePath);
         router.refresh();
       }else{
         setIsError(true);
+        toast.error(`La connexion a échouée.`)
       }
   
       setIsLoading(false);
@@ -52,6 +56,7 @@ export const Login = () => {
   };
   return (
    <div className="flex justify-center items-center bg-black-2  bg-cover bg-center overflow-hidden h-screen py-6" style={{ backgroundImage: "url('/images/login/acte.png')" }}>
+    <Toaster richColors position="top-right" />
       <div className="absolute inset-0 bg-black/50"></div>
       <div className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden grainy rounded-2xl z-30 h-full shadow-2xl shadow-primary-900/70">
        <LeftFormSection/>
@@ -60,14 +65,8 @@ export const Login = () => {
           <h2 className="text-3xl font-bold leading-tight text-primary-800 sm:text-3xl text-center">
             Connexion
           </h2>
-
+      
           <form onSubmit={handleSubmit(handleLogin)} className="mt-8">
-            {isError ? (
-              <p className="bg-meta-1/80 p-4 text-white rounded-md my-2">
-                La connexion a échouée. Veuillez vérifier votre nom
-                d&apos;utilisateur et mot de passe et réessayer.{" "}
-              </p>
-            ) : null}
             <div className="space-y-5">
               <TextInput
                 labelText="Nom d'utilisateur"
