@@ -4,6 +4,7 @@ import NextAuth, { Awaitable, NextAuthOptions } from "next-auth"
 import { IAuth } from '@/types/auth';
 import { IUser } from '@/types/user';
 import { JWT } from 'next-auth/jwt';
+import { loginUser } from '@/services/userService';
 
 const authOptions: NextAuthOptions = {
   pages: {
