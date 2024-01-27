@@ -29,12 +29,12 @@ export const BirthCertUnDeliveredFilterList: React.FC<Props> = ({
 const handleRedirectToReporting = async ()=>{
   if (Object.keys(birthCertToReporting).length ===0) {
     dispatch(setLoadingApp({loading:true, content:"Traitement de l'operation en cours.... Veuillez patienter SVP"}))
-    redirectToRoute()
+    redirectToReportingRoute()
     setTimeout(() => dispatch(setLoadingApp({loading:false, content:"Traitement terminé"})), 1000);
   }
-    redirectToRoute()
+    redirectToReportingRoute()
 }
-const redirectToRoute =()=>{
+const redirectToReportingRoute =()=>{
   localStorage.setItem('birthCertReporting', JSON.stringify(birthCertsUnDeliveredFilters[0]))
   router.push('/admin/birth-certificate/reporting')
 }
