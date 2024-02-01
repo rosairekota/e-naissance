@@ -75,7 +75,7 @@ export const BirthCertReporting = () => {
           Certificat de Naissance
         </h1>
         <div className=" pt-1">
-         <p> Je soussigné, Docteur:<span className="font-bold"> {data.doctorName} </span>, certifie que Madame:
+         <p> Je soussigné, {data.doctorTitle}:<span className="font-bold"> {data.doctorName} </span>, certifie que Madame:
          <span className="font-bold">{data.motherName} </span>, Epouse de Monsieur: <span className="font-bold pr-2">{data.fatherName}</span>
           a accouché
           à: <span className="font-bold">{data.deliveryPlace}</span>
@@ -89,8 +89,10 @@ export const BirthCertReporting = () => {
           Nom,Post-nom et Prénom de 
           l&apos;enfant: <span className="font-bold">  {data.lastName} {data.firstName} {data.name}   </span>. Numéro de reference:  <span className="font-bold">  {data.referenceNumber} </span>
           </p>
+          <p className="flex justify-end  p-6">{data.doctorFunction}, <span className="font-bold">  {data.doctorName} </span>.</p>
           <p className="flex justify-end  p-6">
-          Fait à Kinshasa,le { new Date().getFullYear()}
+          Fait à Kinshasa,le {'22/20/2024'}
+         
           </p>
         </div>
       </div>

@@ -12,6 +12,8 @@ import useLocalStorage from "@/hooks/useLocalStorage";
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState, setLoadingApp } from "@/store";
+import { BirthCertFormStep } from "./BirthCertFormStep";
+import MultiStepForm from "./MTstep";
 
 
 type Props = {
@@ -23,21 +25,14 @@ export const BirthCertUnDeliveredFilterList: React.FC<Props> = ({
 }) => {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [ showBirthCertForm, setShowBirthCertForm] = useState<boolean>(false)
   const {birthCertToReporting} = useSelector((state:RootState)=>state.birthCert)
   const  dispatch = useDispatch<AppDispatch>()
     
 const handleRedirectToReporting = async ()=>{
-  if (Object.keys(birthCertToReporting).length ===0) {
-    dispatch(setLoadingApp({loading:true, content:"Traitement de l'operation en cours.... Veuillez patienter SVP"}))
-    redirectToReportingRoute()
-    setTimeout(() => dispatch(setLoadingApp({loading:false, content:"Traitement terminé"})), 1000);
-  }
-    redirectToReportingRoute()
+    setShowBirthCertForm(!showBirthCertForm)
 }
-const redirectToReportingRoute =()=>{
-  localStorage.setItem('birthCertReporting', JSON.stringify(birthCertsUnDeliveredFilters[0]))
-  router.push('/admin/birth-certificate/reporting')
-}
+
 
   const columns: ColumnDef<IBirthCertificate>[] = [
     {
@@ -57,7 +52,14 @@ const redirectToReportingRoute =()=>{
       ),
     },
     {
-      accessorKey: "montherName",
+      accessorKey: "genderChild",
+      header: "SEXE",
+      cell: ({ row }) => (
+        <div className="capitalize">{`${row.original.genderChild}`}</div>
+      ),
+    },
+    {
+      accessorKey: "deliveryPlace",
       header: ({ column }) => {
         return (
           <Button
@@ -91,7 +93,7 @@ const redirectToReportingRoute =()=>{
             onClick={handleRedirectToReporting}
             className="bg-primary-800 text-white h-5 py-4 px-6"
           >
-            Générer le certificat 
+            Générer le certificat
           </Button>
         );
       },
@@ -113,7 +115,8 @@ const redirectToReportingRoute =()=>{
         hideSearchBar={true}
       />
       </div>)}
-     
+      {/* <MultiStepForm isOpen={showBirthCertForm} handleOpen={handleRedirectToReporting} defaultValues={birthCertsUnDeliveredFilters[0]}/> */}
+      <BirthCertFormStep isOpen={showBirthCertForm} handleOpen={handleRedirectToReporting} defaultValues={birthCertsUnDeliveredFilters[0]}/>
     </div>
   );
 };

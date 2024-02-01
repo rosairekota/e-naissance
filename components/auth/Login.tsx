@@ -1,10 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import Image from "next/image";
+import { classValidatorResolver } from "@hookform/resolvers/class-validator";
 import { useRouter } from "next/navigation";
-import { loginSchemaValidation } from "@/validators/login.schema";
+import { LoginDto, loginSchemaValidation } from "@/validators/login.schema";
 import { TextInput } from "../ui/inputs/TextInput";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
@@ -12,12 +11,20 @@ import { Toaster, toast } from 'sonner'
 
 import { LeftFormSection } from "../admin/form/LeftFormSection";
 import { LoginSpinner as  Spinner } from "../ui/Spinner";
-import { Alert } from "../ui/Alerts";
+import { Length, Min, IsEmail } from 'class-validator';
+class User {
+  @Length(2, 30)
+  username: string;
+
+  @IsEmail()
+  email: string;
+}
+
 type ILogin = {
   username: string;
   password: string;
 };
-
+const resolver = classValidatorResolver(LoginDto)
 export const Login = () => {
   const router = useRouter();
   const {
@@ -26,7 +33,7 @@ export const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<ILogin>({
-    resolver: yupResolver(loginSchemaValidation),
+    resolver,
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);

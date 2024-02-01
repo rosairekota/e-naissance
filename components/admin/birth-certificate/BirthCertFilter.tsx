@@ -9,7 +9,6 @@ import {
   setBirthCertUnDeliveredFilters,
   setSearchUnDeliveredCert,
 } from "@/store";
-import { InfoIcon, SearchIcon, X } from "lucide-react";
 import ResetIcon from "@/components/icons/ResetIcon";
 import SearchInput from "@/components/ui/inputs/SearchInput";
 import jsonData from "@/data/birth-certificate.json";
@@ -18,8 +17,9 @@ import { setIsCertSearched } from "@/store/birth-certificate/birth-certSlice";
 import { Spinner } from "@/components/ui/admin-spinner";
 import { Alert } from "@/components/ui/Alerts";
 import { toast } from "sonner";
+import { SearchIcon } from "lucide-react";
 
-const jsonDataTest: IBirthCertificate[] = jsonData;
+const jsonDataTest: IBirthCertificate[] = jsonData as IBirthCertificate[];
 
 interface IBirthCertFilter {
   filter: string;
