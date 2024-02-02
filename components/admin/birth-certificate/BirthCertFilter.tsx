@@ -83,7 +83,7 @@ export const BirthCertFilter = () => {
                 className={buttonVariants({
                   size: "lg",
                   className:
-                    "px-4 py-4 mt-2 text-base font-semibold text-white transition-all duration-200 bg-primary-900/90 border border-transparent rounded-md focus:outline-none hover:bg-primary-900 focus:bg-primary-900 disabled:bg-primary-800/50",
+                    "px-4 py-4 mt-2 text-base font-semibold text-white transition-all duration-200 bg-danger/90 border border-transparent rounded-md focus:outline-none hover:bg-danger/90 focus:bg-danger/90 disabled:bg-danger/50",
                 })}
               >
                 Réinitialiser

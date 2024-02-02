@@ -12,14 +12,14 @@ import Breadcrumb from "@/components/ui/Breadcrumbs/Breadcrumb";
 export const BirthCertReporting = () => {
  const {birthCertToReporting: data} = useSelector((state:RootState)=>state.birthCert)
  const {user} = useSelector((state:RootState)=>state.auth)
- const dispatch = useDispatch<AppDispatch>()
+//  const dispatch = useDispatch<AppDispatch>()
  const ref = useRef<any>();
   
 
- useEffect(()=>{
-    const data1 = localStorage.getItem('birthCertReporting')
-    dispatch(setBirthCertToReporting(data1))
- },[dispatch])
+//  useEffect(()=>{
+//     const data1 = localStorage.getItem('birthCertReporting')
+//     dispatch(setBirthCertToReporting(data1))
+//  },[dispatch])
   const { toPDF, targetRef } = usePDF({
     filename: "certificat-de-naissance.pdf",
     page: { margin: Margin.MEDIUM }

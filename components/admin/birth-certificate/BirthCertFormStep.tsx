@@ -10,7 +10,7 @@ import { IFormStep } from "@/types/form-step";
 import { FormStepper } from "@/components/ui/stepper";
 import { birthCertFormFields } from "@/data/form/birth-cert-form";
 import { useDispatch } from "react-redux";
-import { AppDispatch, setLoadingApp } from "@/store";
+import { AppDispatch, setBirthCertToReporting, setLoadingApp } from "@/store";
 
 type ModalProps = {
   handleOpen: (e: any) => void;
@@ -40,7 +40,6 @@ export const BirthCertFormStep: React.FC<ModalProps> = ({
     try {
       setIsLoading(true);
       setIsError(false);
-      console.log("data", data)
       processReporting(data)
       setIsError(true);
       setIsLoading(false);
@@ -69,7 +68,8 @@ export const BirthCertFormStep: React.FC<ModalProps> = ({
     }
   };
   const persistBirthCertReporting =(data:IBirthCertificate)=>{
-    localStorage.setItem('birthCertReporting', JSON.stringify(data))
+    // localStorage.setItem('birthCertReporting', JSON.stringify(data))
+    dispatch(setBirthCertToReporting(data))
   }
   const redirectToReportingRoute =()=>{
     router.push(redirectToPath);

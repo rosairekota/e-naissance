@@ -37,7 +37,7 @@ export const birthCertSlice = createSlice({
             
         },
         setBirthCertToReporting(state, {payload}){
-            state.birthCertToReporting= JSON.parse(payload)
+            state.birthCertToReporting= payload
             
         },
         setSearchUnDeliveredCert(state, {payload}){

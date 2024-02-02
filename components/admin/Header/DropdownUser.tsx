@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
+import { persistor } from "@/store/persistor";
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -16,6 +17,7 @@ const DropdownUser = () => {
   const handleLogout = (e: any) => {
     e.preventDefault()
     signOut()
+    persistor.purge()
     router.push('/auth/signin')
     router.refresh()
   }

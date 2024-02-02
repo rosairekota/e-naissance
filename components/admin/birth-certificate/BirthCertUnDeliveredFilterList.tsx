@@ -6,14 +6,10 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
 import { DataTable } from "@/components/ui/data-table";
 import { IBirthCertificate } from "@/types/birth-certificate";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import useLocalStorage from "@/hooks/useLocalStorage";
-import { toast } from "sonner";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState, setLoadingApp } from "@/store";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 import { BirthCertFormStep } from "./BirthCertFormStep";
-import MultiStepForm from "./MTstep";
 
 
 type Props = {
@@ -23,26 +19,36 @@ type Props = {
 export const BirthCertUnDeliveredFilterList: React.FC<Props> = ({
   birthCertsUnDeliveredFilters,
 }) => {
-  const router = useRouter()
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [ showBirthCertForm, setShowBirthCertForm] = useState<boolean>(false)
-  const {birthCertToReporting} = useSelector((state:RootState)=>state.birthCert)
-  const  dispatch = useDispatch<AppDispatch>()
-    
-const handleRedirectToReporting = async ()=>{
-    setShowBirthCertForm(!showBirthCertForm)
-}
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showBirthCertForm, setShowBirthCertForm] = useState<boolean>(false);
+  const { birthCertToReporting } = useSelector(
+    (state: RootState) => state.birthCert
+  );
+  const redirectToPath = "/admin/birth-certificate/reporting";
 
+  const handleRedirectToReporting = async () => {
+    if (Object.keys(birthCertToReporting).length === 0) {
+      setShowBirthCertForm(!showBirthCertForm);
+    } else if (
+      birthCertToReporting.referenceNumber ===
+      birthCertsUnDeliveredFilters[0].referenceNumber
+    ) {
+      redirectToReportingRoute()
+    } else {
+      setShowBirthCertForm(!showBirthCertForm);
+    }
+  };
+  const redirectToReportingRoute =()=>{
+    router.push(redirectToPath);
+    router.refresh();
+  }
 
   const columns: ColumnDef<IBirthCertificate>[] = [
     {
       accessorKey: "referenceNumber",
       header: "NUMERO DE REFERENCE ENFANT",
-      cell: ({ row }) => (
-        <div>
-        {row.original.referenceNumber}
-        </div>
-      ),
+      cell: ({ row }) => <div>{row.original.referenceNumber}</div>,
     },
     {
       accessorKey: "name",
@@ -87,11 +93,11 @@ const handleRedirectToReporting = async ()=>{
       enableHiding: false,
       cell: ({ row }) => {
         return (
-            <Button
+          <Button
             variant="default"
             size="sm"
             onClick={handleRedirectToReporting}
-            className="bg-primary-800 text-white h-5 py-4 px-6"
+            className="bg-primary-900/90 hover:bg-primary-900 text-white font-semibold py-8 sm:py-8 md:py-6 xl:py-3 xl:px-6"
           >
             Générer le certificat
           </Button>
@@ -101,24 +107,35 @@ const handleRedirectToReporting = async ()=>{
   ];
   return (
     <div>
-      { isLoading?(<div>
-        Traitement de l&apos;operation en cour.... Veuillez patienter SVP.
-      </div>):(
-      <div>
-        <h2 className="font-bold uppercase mb-2">Informations sur la femme</h2>
-        <ul>
-          <li>Noms: {birthCertsUnDeliveredFilters && birthCertsUnDeliveredFilters[0].motherName}</li>
-        </ul>
-         <DataTable<ColumnDef<IBirthCertificate>[], IBirthCertificate[]>
-        columns={columns}
-        data={birthCertsUnDeliveredFilters}
-        hideSearchBar={true}
-      />
-      </div>)}
+      {isLoading ? (
+        <div>
+          Traitement de l&apos;operation en cour.... Veuillez patienter SVP.
+        </div>
+      ) : (
+        <div>
+          <h2 className="font-bold uppercase mb-2">
+            Informations sur la femme
+          </h2>
+          <ul>
+            <li>
+              Noms:{" "}
+              {birthCertsUnDeliveredFilters &&
+                birthCertsUnDeliveredFilters[0].motherName}
+            </li>
+          </ul>
+          <DataTable<ColumnDef<IBirthCertificate>[], IBirthCertificate[]>
+            columns={columns}
+            data={birthCertsUnDeliveredFilters}
+            hideSearchBar={true}
+          />
+        </div>
+      )}
       {/* <MultiStepForm isOpen={showBirthCertForm} handleOpen={handleRedirectToReporting} defaultValues={birthCertsUnDeliveredFilters[0]}/> */}
-      <BirthCertFormStep isOpen={showBirthCertForm} handleOpen={handleRedirectToReporting} defaultValues={birthCertsUnDeliveredFilters[0]}/>
+      <BirthCertFormStep
+        isOpen={showBirthCertForm}
+        handleOpen={handleRedirectToReporting}
+        defaultValues={birthCertsUnDeliveredFilters[0]}
+      />
     </div>
   );
 };
-
-
